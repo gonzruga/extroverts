@@ -2,7 +2,6 @@ package com.kita.extroverts.service;
 
 import com.kita.extroverts.dto.ReviewDto;
 import com.kita.extroverts.model.Review;
-import com.kita.extroverts.model.User;
 import com.kita.extroverts.repository.ReviewRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

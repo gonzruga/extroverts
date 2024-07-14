@@ -1,7 +1,6 @@
 package com.kita.extroverts.repository;
 
 import com.kita.extroverts.model.Hobby;
-import com.kita.extroverts.model.Stebby;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
@@ -17,6 +16,7 @@ public interface HobbyRepository extends JpaRepository<Hobby, Long> {
             "OR t.tagTitle LIKE %?1%" +
             "OR t.tagDescription LIKE %?1%"
     )
+
     public List<Hobby> findAll(String keyword);
 
 }

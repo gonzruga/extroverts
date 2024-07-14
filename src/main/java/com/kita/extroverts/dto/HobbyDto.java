@@ -1,7 +1,6 @@
 package com.kita.extroverts.dto;
 
 import com.kita.extroverts.model.Hobby;
-import com.kita.extroverts.model.Stebby;
 import com.kita.extroverts.model.Tag;
 import com.kita.extroverts.model.User;
 import lombok.Getter;

@@ -35,10 +35,6 @@ public class Hobby {
     @JoinColumn(name = "creator_id")
     private User hobbyCreator;
 
-    public Long getHobbyCreatorId() {
-        return hobbyCreator != null ? hobbyCreator.getId() : null;
-    }
-
 //    @ElementCollection   //This ensures that JPA handles the collection mapping appropriately.
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "hobby_id")

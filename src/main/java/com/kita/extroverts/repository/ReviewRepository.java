@@ -2,7 +2,6 @@ package com.kita.extroverts.repository;
 
 
 import com.kita.extroverts.model.Review;
-import com.kita.extroverts.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

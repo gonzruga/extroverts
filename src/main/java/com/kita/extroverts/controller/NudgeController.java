@@ -2,24 +2,18 @@ package com.kita.extroverts.controller;
 
 import com.kita.extroverts.dto.NudgeDto;
 import com.kita.extroverts.model.Nudge;
-import com.kita.extroverts.model.Tag;
 import com.kita.extroverts.model.User;
-import com.kita.extroverts.repository.TagRepository;
 import com.kita.extroverts.service.NudgeService;
-import com.kita.extroverts.service.TagService;
 import com.kita.extroverts.service.UserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-
-import java.util.List;
 
 @Slf4j
 @Controller

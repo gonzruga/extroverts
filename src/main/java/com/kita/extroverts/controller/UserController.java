@@ -2,10 +2,8 @@ package com.kita.extroverts.controller;
 
 
 import com.kita.extroverts.dto.UserDto;
-import com.kita.extroverts.model.Hobby;
 import com.kita.extroverts.model.Stebby;
 import com.kita.extroverts.model.User;
-import com.kita.extroverts.repository.HobbyRepository;
 import com.kita.extroverts.repository.StebbyRepository;
 import com.kita.extroverts.service.HobbyService;
 import com.kita.extroverts.service.StebbyService;
@@ -34,9 +32,6 @@ public class UserController {
 
     @Autowired
     private StebbyRepository stebbyRepository;
-
-    @Autowired
-    private HobbyService hobbyService;
 
     // CREATE - POST
     @PostMapping("/user1")  // With DTO
@@ -130,11 +125,6 @@ public class UserController {
     }
 
 // DELETE
-
-    @GetMapping("/userDelete2/{id}")
-    public String deleteUser2(@PathVariable long id) {
-        return service.deleteUser(id);
-    }
 
     @GetMapping("/userDelete/{id}")
     public String deleteUser(@PathVariable long id) {
