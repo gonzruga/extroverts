@@ -1,0 +1,70 @@
+<div th:replace="~{Fragments/head}"></div>
+
+<body>
+<div th:replace="~{Fragments/MainNavbar}"></div>
+<main>
+<!--    Container START-->
+<div class="container">
+
+    <div class="row g-4">
+
+        <div th:replace="~{Fragments/NavLeft}"></div>
+
+<!--        Main Content Start-->
+        <div class="col-md-8 col-lg-6 vstack gap-4">
+
+            <div class="card">
+
+                <div class="card-header border-0 pb-0">
+                    <h1 class="h4 card-title mb-0">STEBBY PAGE</h1>
+                    <br>
+                    <p th:text="'[Editing will be restricted]'" >
+                </div>
+
+                <div class="card-body">
+
+                    <p th:text="'Stebby Service: ' + ${stebby.service}" > <br>
+                    <p th:text="'Service Provider: ' + ${stebby.getServiceProvider}" > <br>
+                    <p th:text="'Price: Euros ' + ${stebby.getPrice}" > <br>
+                    <p th:text="'Category: ' + ${stebby.getCategory}" > <br>
+                    <p th:text="'Description: ' + ${stebby.getServiceDescription}" > <br>
+
+                    <div> <a th:href="${stebby.getLink()}" target="_blank">Website</a> </div> <br>
+
+                    <p th:text="'Tags: '" >
+                    <div>
+                        <a th:href="@{/stebbies(keyword=${tag.tagTitle})}" th:each="tag : ${stebby.tagListStebby}" th:text="${tag.tagTitle} + ', '"> </a>
+                    </div>
+
+<!--                    Divider-->
+                    <hr>
+
+                    <form th:action="@{/stebbyEdit/{id}(id=${stebby.id})}" th:object="${stebby}" method="GET">
+                        <input type="submit" value="Edit Stebby" />
+                    </form>
+
+<!--                    <form th:action="@{/stebbyDelete/{id}(id=${stebby.id})}">-->
+<!--                        <input type="submit" value="Delete" style="color:red" />-->
+<!--                    </form>-->
+
+                    <form th:action="@{/stebbies}">
+                        <input type="submit" value="Back to List of Stebbies" style="color:blue" />
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+<!--        Main Content End-->
+
+    <div th:replace="~{Fragments/NavRight}"></div>
+
+</div>
+
+</div>
+<!--    Container END-->
+</main>
+</body>
+
+<div th:replace="~{Fragments/footer}"></div>

@@ -1,0 +1,100 @@
+<div th:replace="~{Fragments/head}"></div>
+
+<body>
+
+<div th:replace="~{Fragments/MainNavbar}"></div>
+
+<main>
+
+<!-- Container START -->
+
+<div class="container">
+
+  <!-- Row START -->
+    <div class="row g-4">
+
+      <!-- Left sidebarLeft -->
+      <div th:replace="~{Fragments/NavLeft}"></div>
+
+      <!-- Main content START -->
+      <div class="col-md-8 col-lg-6 vstack gap-4">
+
+            <!-- Card feed item START -->
+            <div class="row g-3 mb-4">
+
+                <div class="d-sm-flex justify-content-between align-items-center">
+                    <h5 class="mb-md-0">LIST OF SOME STEBBY SERVICES</h5>
+                </div>
+
+                <div>
+                    <form th:action="@{stebbies}">
+                        Filter:
+                        <input type="text" name="keyword" th:value="${keyword}" required />
+                        &nbsp;
+                        <input type="submit" name="Search" />
+                        &nbsp;
+                        <input type="button" value="Clear" onclick="clearFilter()" />
+
+                        <a href="/stebbyForm">Add A STEBBY Service</a> <br><br>
+
+                    </form>
+                </div>
+
+                <!-- START CARDS DIV -->
+                <div class="col-sm-6 col-md-4 col-xl-4 col-xxl-4">
+
+                    <dl th:each="stebby : ${stebby}" class="card position-relative">
+<!--                        <dd>-->
+<!--&lt;!&ndash;                            TODO: Review images - add image two  &ndash;&gt;-->
+<!--                            <div class="card-image">-->
+<!--                                <img class="card-img-top" th:src="${stebby.getImageOneUrl()}" alt="stebby Picture One" >-->
+<!--                            </div>-->
+
+<!--                        </dd>-->
+
+<!--                    Removed class="stretched-link" because it applies to all stebbys. TODO: Debbuging-->
+
+                        <dd><h5> <a th:href="@{/stebbyPage/{id}(id=${stebby.id})}"><span th:text="${stebby.service}"></span></a> </h5></dd>
+
+<!--                        <dd> <span th:text="'Service Provider: ' + ${stebby.getServiceProvider}"></span> </dd>-->
+                        <dd> <span th:text="'Price: ' + ${stebby.getPrice} + '€'"></span> </dd>
+<!--                        <dd> <span th:text="'Category: ' + ${stebby.getCategory}"></span> </dd>-->
+                        <dd>  <div> <a th:href="${stebby.getLink()}" target="_blank">Website</a> </div> </dd>
+
+                        <dd> <span th:text="'Tags: '"></span> </dd>
+                        <dd> <a th:href="@{/stebbies(keyword=${tag.tagTitle})}" th:each="tag : ${stebby.tagListStebby}" th:text="${tag.tagTitle} + ', '"> </a></dd>
+
+
+                    </dl>
+                </div>
+
+            </div>
+            <!-- Card feed item END -->
+
+
+        </div>
+      <!-- Main content END -->
+
+      <!-- Right sidebarRight -->
+      <div th:replace="~{Fragments/NavRight}"></div>
+
+  </div>
+  <!-- Row END -->
+</div>
+
+
+<!-- Container END -->
+
+</main>
+
+<script>
+    type="text/javascript">
+        function clearFilter() {
+            window.location = '/stebbies';
+        }
+</script>
+
+</body>
+
+<div th:replace="~{Fragments/footer}"></div>
+

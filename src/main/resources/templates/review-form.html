@@ -1,0 +1,69 @@
+<div th:replace="~{Fragments/head}"></div>
+
+<body>
+
+<div th:replace="~{Fragments/MainNavbar}"></div>
+
+<main>
+
+<!--    Container START-->
+<div class="container">
+
+<!--    Row  START-->
+    <div class="row g-4">
+
+        <div th:replace="~{Fragments/NavLeft}"></div>
+
+<!--        Main Content START-->
+        <div class="col-md-8 col-lg-6 vstack gap-4">
+
+        <h3> WRITE A REVIEW</h3>
+
+            <p th:text="'Write an honest review for revieweeName ' "/>
+<!--            ${revieweeName}-->
+
+            <p th:text="'You may include: '"/>
+            <ul>
+                <li>If the person hosted you or you hosted them.</li>
+                <li>If the activity was a hobby or stebby or otherwise.</li>
+                <li>What were your first impressions of the person and how was the activity.</li>
+            </ul>
+
+            <form th:action="@{/reviewSubmit}" th:object="${review}" method="POST">
+                <!--Hidden-->
+<!--                <input type="number" th:value="${revieweeId}" name="revieweeId" style="display: none"/>-->
+                <input type="hidden" th:value="${revieweeId}" th:name="revieweeId" />
+                <input type="hidden" th:value="${revieweeName}" th:name="revieweeName" />
+
+
+                <!--    Displayed-->
+<!--                <p> <input type="text" th:field="*{content}" label="content"  placeholder="Insert your review here" /></p>-->
+                <label for="content">Review:</label>
+                <br>
+                <textarea id="content" name="content" th:field="*{content}" label="content" rows="4" cols="20" placeholder="Insert your review here" ></textarea>
+                <br>
+                <br>
+                <p> <input type="text" th:field="*{name}" label="name"  placeholder="Insert your name" /></p>
+
+                <br>
+                <input type="submit" value="Submit" />
+
+                <input type="reset" value="Reset" />
+
+            </form>
+
+        </div>
+<!--        Main Content End-->
+
+        <div th:replace="~{Fragments/NavRight}"></div>
+
+    </div>
+<!--    Row END-->
+
+</div>
+<!--    Container END-->
+
+</main>
+</body>
+
+<div th:replace="~{Fragments/footer}"></div>

@@ -1,0 +1,65 @@
+<div th:replace="~{Fragments/head}"></div>
+<div>
+<body>
+<div th:replace="~{Fragments/MainNavbar}"></div>
+<main>
+
+<!--    Container START-->
+<div class="container">
+    <!--    Row  START-->
+    <div class="row g-4">
+        <div th:replace="~{Fragments/NavLeft}"></div>
+
+        <!--        Main Content START-->
+        <div class="col-md-8 col-lg-6 vstack gap-4">
+
+            <h4>EXTROVERTS!!</h4>
+            <p th:text="'Here is a list of great extroverts you can connect with and are willing to host you at their respective passions and professions.'"/>
+
+            <ol>
+                <li>Create your profile</li>
+                <li>Add your hobbies & favourite Stebby services</li>
+                <li>Send someone a nudge and we shall connect you.</li>
+            </ol>
+
+            <a href="/userForm">Add yourself.</a>
+
+            <dl th:each="user : ${user}" class="card position-relative">
+
+<!--                <dd><a class="stretched-link" th:href="@{userPage/{id}(id=${user.id})}"><b th:text="${user.firstName}"></b></a></dd>-->
+<!--                <dd><span th:text="'User ID: '+ ${user.id}"></span></dd>-->
+
+                <dd><a th:href="@{userPage/{id}(id=${user.id})}"><b th:text="${user.firstName} + ' ' + ${user.secondName} "></b></a></dd>
+                <dd><span th:text="${user.gender}"></span></dd>
+                <dd><span th:text="${user.origin.displayValue}"></span></dd>
+
+                <dd><span th:text="'Industry Profession: ' + ${user.profession}"></span></dd>
+                <dd><span th:text="'Department: ' + ${user.department}"></span></dd>
+                <dd><a th:href="${user.getLinkedIn()}" target="_blank">LinkedIn Profile</a></dd>
+
+                <dd> <span th:text="'Hobby: '"></span>
+                    <div>
+                        <a th:href="@{/hobbyPage/{id}(id=${hobby.getId})}" th:each="hobby : ${user.hobbies}" th:text="${hobby.title} " target="_blank"> </a>
+<!--                        + ' - €' + ${hobby.price}-->
+                    </div>
+                <dd> <span th:text="'Stebby: '"></span><dd>
+
+                <div>
+                    <a th:href="@{/stebbyPage/{id}(id=${stebby.getId})}" th:each="stebby : ${user.stebbyList}" th:text="${stebby.service} + ' - €' + ${stebby.price} + ', '" target="_blank"> </a>
+                </div>
+                </dd>
+            </dl>
+
+        </div>
+        <!--        Main Content End-->
+
+        <div th:replace="~{Fragments/NavRight}"></div>
+
+    </div>
+    <!--    Row END-->
+</div>
+<!--    Container END-->
+</main>
+</body>
+</div>
+<div th:replace="~{Fragments/footer}"></div>

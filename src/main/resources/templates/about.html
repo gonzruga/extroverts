@@ -1,0 +1,106 @@
+<div th:replace="~{Fragments/head}"></div>
+
+<body>
+
+<div th:replace="~{Fragments/MainNavbar}"></div>
+
+<main>
+<!--    Container START-->
+    <div class="container">
+        <!--    Row  START-->
+        <div class="row g-4">
+
+            <div th:replace="~{Fragments/NavLeft}"></div>
+
+            <!--        Main Content START-->
+            <div class="col-md-8 col-lg-6 vstack gap-4">
+
+                <h3>ABOUT THIS PLATFORM AND HOW IT WORKS </h3>
+
+                <p>
+                    This platform is for extroverts to connect by showcasing their favourite hobbies and activities.
+                    It works in three basic steps:
+                </p>
+
+                <ol>
+                    <li>Create your profile. </li>
+                    <li>Add your favorite hobbies and Stebby activites.</li>
+                    <li>Send a NUDGE to a fellow extrovert.</li>
+                </ol>
+
+                <p>
+                    We are currently focusing on extroverts to get many people to join and since they are more likely to be willing to:
+                </p>
+
+                <ul>
+                    <li>share information about their passions. </li>
+                    <li>meet new people. </li>
+                    <li>host people </li>
+                </ul>
+
+                <p>
+                    The main preposition is for extroverts to be able to host each other and/or provide information.
+                    The platform will recommend to you fellow extroverts worth connecting with.
+                    Moreover, a key feature of the platform is sending a 'NUDGE’ to another extrovert to either:
+                </p>
+
+                <ul>
+                    <li>Request to be hosted. </li>
+                    <li>Request for information. </li>
+                </ul>
+
+                <p>
+                    In the Nudge you shall include a message to the host and provide which contact information they should use to contact you.
+                    For privacy issues you may opt to provide your Telegram handle as it is secure and will not reveal your phone number.
+                    Introverts are still welcome to join – in the future we shall add more diverse features for a wider audience.
+                    This is still a BETA version with work in progress. The design will be continuously improved.
+                    Your feedback is highly appreciated, particularly about the core functionalities of creating profiles, hobbies, stebbies, nudges and reviews.
+                </p>
+
+                <h6>What is HOSTING?</h6>
+
+                <ul>
+                    <li>Hosting is basically guiding someone. Providing information needed for the guest to engage in the respective activity.
+                        Hosting is being physically present or remotely available to provide any needed information and answer questions. </li>
+                    <li>The host ideally should be the first person the guest meets. </li>
+                    <li>The host should provide useful information needed to be known before and at the activity. </li>
+                    <li>The host should introduce the guest to people known by the host. </li>
+                    <li>Host and guest should respect commitments made such as keeping time and instantly communicating any actual or potential changes. </li>
+                </ul>
+
+                <p>
+                    It is understandable if a host may not be physically present – this should be communicated in advance.
+                    It happens that a person gets too many hosting requests and/or has other commitments preventing him from being physically present on the day the guest is available or selected to engage in the respective activity.
+                    We believe this is still okay and that the guest can still benefit from getting insights, advice and guidance. The host may refer the guest to another person confirmed that will be physically present –
+                    if that person is also a user of this platform the guest should send him/her a NUDGE, otherwise this platform can't help any further and it is the discretion of the guest to accept the referral.
+                </p>
+
+                <h6>Hosting is NOT:</h6>
+                <li>
+                    A host is not a baby-sitter. The host is not required to be with the guest the whole time, but a decent amount of time to enable the guest to navigate alone. The host helps 'onboarding' the guest to have a smooth landing/transition into discovering the activity. T
+                    he guest is expected to be able to thereafter proceed to explore the activity and people.
+                </li>
+                <li>Hosting is not a date - unless willingly explicitly mutually agreed. </li>
+                <li>The host is not expected to pay for anything unless he/she volunteers to do so. </li>
+
+                <h6>Features Not Yet Included and/or Upcoming</h6>
+                <p>
+                    <b>User Login: </b>we have currently disabled user login that to make it easy to use the platform immediately. We shall enable it in due time.
+                    The implication is that you can't edit sensitive details (phone, email etc) to do so send instructions to the admin.
+                </p>
+                <p>
+                    <b>Messaging: </b>once we enable user login, we shall enable users to message each other with some restrictions. This may reduce the need of nudges.
+                </p>
+
+            </div>
+            <!--        Main Content End-->
+
+            <div th:replace="~{Fragments/NavRight}"></div>
+
+        </div>
+        <!--    Row END-->
+    </div>
+<!--    Container END-->
+</main>
+</body>
+<div th:replace="~{Fragments/footer}"></div>

@@ -1,0 +1,114 @@
+<div th:replace="~{Fragments/head}"></div>
+<div>
+<body>
+<div th:replace="~{Fragments/MainNavbar}"></div>
+<main>
+
+<!--    Container START-->
+<div class="container">
+    <!--    Row  START-->
+    <div class="row g-4">
+        <div th:replace="~{Fragments/NavLeft}"></div>
+
+        <!--        Main Content START-->
+        <div class="col-md-8 col-lg-6 vstack gap-4">
+
+            <div class="card">
+                <div class="card-header border-0 pb-0">
+                    <h1 class="h4 card-title mb-0">EXTROVERT PROFILE</h1>
+                </div>
+
+                <div class="card-body">
+
+                    <p th:text="'ID: ' + ${user.id}" style="display:none" />
+
+                    <p th:text="'Name: ' + ${user.firstName} + ' ' + ${user.secondName}" ></p>
+                    <p th:text="'User ID: ' + ${user.id}" >
+                    <p th:text="'Gender: ' + ${user.gender}" >
+                    <p th:text="'Origin: ' + ${user.origin.displayValue}" >
+
+                    <p th:text="'Profession: ' + ${user.profession}" >
+                    <p th:text="'Department: ' + ${user.department}" >
+<!--                    <p th:text="'LinkedIn: ' + ${user.linkedIn}" >-->
+                    <div> <a th:href="${user.getLinkedIn()}" target="_blank">LinkedIn Profile</a> </div>
+                    <br>
+                    <p th:text="'Bio: ' + ${user.bio}" >
+
+<!--                    <p th:text="'Dating Objective: ' + ${user.datingObjectives}" >-->
+
+<!--            HOBBIES-->
+                    <p th:text="'Hobbies'" >
+                    <dl th:each="hobby : ${user.hobbies}">
+                        <dd>
+                            <a th:href="@{/hobbyPage/{id}(id=${hobby.id})}">
+                                <span th:text="${hobby.getTitle()}" style="color:blue"></span>
+                            </a>
+                        </dd>
+                        <dd> <span th:text="${hobby.getHobbyDescription()}"> </span> </dd>
+                        <dd> <a th:href="${hobby.getLink()}" target="_blank">Link </a> </dd>
+                    </dl>
+<!--                    <div>-->
+<!--                        <a th:href="@{/hobbyPage/{id}(id=${hobby.getId})}" th:each="hobby : ${user.hobbies}" th:text="${hobby.title}" target="_blank"> </a>-->
+<!--                    </div>-->
+
+                    <form action="#" th:action="@{/hobbyForm/{creatorId}(creatorId=${user.id})}" method="get">
+                        <input type="submit" value="Add Hobby"  />
+                    </form>
+
+<!--            STEBBIES-->
+                    <p th:text="'Stebby: '" >
+                    <div>
+                        <a th:href="@{/stebbyPage/{id}(id=${stebby.getId})}" th:each="stebby : ${user.stebbyList}" th:text="${stebby.service} + ' - €' + ${stebby.price} + ', '" target="_blank"> </a>
+                    </div>
+                    <br>
+
+                    <p th:text="'Click on NUDGE to request ' + ${user.firstName} + ' for information or to host you at any of his or her favourite hobby or Stebby activities'" >
+                    <form action="#" th:action="@{/nudgeForm/{hostId}(hostId=${user.id})}" method="get">
+                        <input type="submit" th:value="'NUDGE'" style="background-color: yellow"/>
+                    </form>
+
+<!--            REVIEWS-->
+                    <p th:text="'Reviews'" >
+                    <dl th:each="review : ${user.reviews}">
+                        <dd>
+                            <a th:href="@{/reviewPage/{id}(id=${review.id})}">
+                                <span th:text="${review.getName()}" style="color:blue"></span>
+                            </a>
+                        </dd>
+                        <dd> <span th:text="${review.getContent()}"> </span> </dd>
+                    </dl>
+                    <form action="#" th:action="@{/reviewForm/{revieweeId}/{revieweeName}(revieweeId=${user.id}, revieweeName=${user.firstName})}" method="get">
+<!--                    <form action="#" th:action="@{/reviewForm/{revieweeId}/(revieweeId=${user.id})}" method="get">-->
+<!--                        /revieweeName=${user.firstName}-->
+                        <input type="submit" value="Add Review"  />
+                    </form>
+<!--            CRUD FUNCTIONS        -->
+                    <form th:action="@{/userEdit/{id}(id=${user.id})}" th:object="${user}" method="GET">
+                        <input type="submit" value="Edit Profile" />
+                    </form>
+
+<!--                    <form th:action="@{/userDelete/{id}(id=${user.id})}">-->
+<!--                        <input type="submit" value="Delete" style="color:red" />-->
+<!--                    </form>-->
+
+                    <form th:action="@{/users}">
+                        <input type="submit" value="Back to Users" style="color:blue" />
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+        <!--        Main Content End-->
+
+        <div th:replace="~{Fragments/NavRight}"></div>
+
+    </div>
+    <!--    Row END-->
+</div>
+<!--    Container END-->
+</main>
+</body>
+</div>
+<div th:replace="~{Fragments/footer}"></div>

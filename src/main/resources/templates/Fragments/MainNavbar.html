@@ -1,0 +1,49 @@
+<header class="navbar-light fixed-top header-static bg-mode">
+
+    <!-- Logo Nav START -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <!-- Logo START -->
+
+            <a class="navbar-brand" href="/users">
+                <img class="light-mode-item navbar-brand-item" th:src="@{/images/extrovert_word.png}" alt="logo">
+                <img class="dark-mode-item navbar-brand-item" th:src="@{/images/extrovert_word.png}" alt="logo">
+            </a>
+
+            <a class="navbar-brand" href="/users">
+                <img class="light-mode-item navbar-brand-item" th:src="@{/images/logo_arrow.png}" alt="logo">
+            </a>
+
+            <!-- Logo END -->
+
+            <!-- Responsive navbar toggler -->
+            <button class="navbar-toggler ms-auto icon-md btn btn-light p-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-animation">
+					<span></span>
+					<span></span>
+					<span></span>
+				</span>
+            </button>
+
+            <!-- Main navbar START -->
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+
+
+                <ul class="navbar-nav navbar-nav-scroll ms-auto">
+                    <!-- Nav item 1 Demos -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link active" th:href="@{/about}" id="about">About</a>
+<!--                        <a class="nav-link active" th:href="@{/about}" id="about">About</a>-->
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link active" href="/users" id="users">Extroverts</a>
+                    </li>
+
+                </ul>
+                <!-- Nav right END -->
+
+            </div>
+        </div>
+    </nav>
+    <!-- Logo Nav END -->
+</header>

@@ -1,0 +1,63 @@
+<div th:replace="~{Fragments/head}"></div>
+
+<body>
+<div th:replace="~{Fragments/MainNavbar}"></div>
+<main>
+<!--    Container START-->
+<div class="container">
+
+    <div class="row g-4">
+
+        <div th:replace="~{Fragments/NavLeft}"></div>
+
+<!--        Main Content Start-->
+        <div class="col-md-8 col-lg-6 vstack gap-4">
+
+            <div class="card">
+
+                <div class="card-header border-0 pb-0">
+                    <h1 class="h4 card-title mb-0">HOST REQUEST</h1>
+                    <br>
+                </div>
+
+                <div class="card-body">
+
+                    <p th:text="'Profile Id of host requestor: ' + ${nudge.yourProfileId}"> <br>
+                    <p th:text="'Requestor Contacts: ' + ${nudge.contacts}" > <br>
+                    <p th:text="'Nudge Comment: ' + ${nudge.comment}" > <br>
+                    <p th:text="'Host Id (manual): ' + ${nudge.subjectId}" > <br>
+                    <p th:text="'Host Name (manual): ' + ${nudge.subjectName}" > <br>
+
+                    <p th:text="'Host Id (auto): ' + ${nudge.nudgedUser.id}" > <br>
+                    <p th:text="'Host Name (auto): ' + ${nudge.nudgedUser.firstName}" > <br>
+
+
+                    <form th:action="@{/nudgeEdit/{id}(id=${nudge.id})}" th:object="${nudge}" method="GET">
+                        <input type="submit" value="Edit" />
+                    </form>
+
+                    <form th:action="@{/nudgeDelete/{id}(id=${nudge.id})}">
+                        <input type="submit" value="Delete" style="color:red" />
+                    </form>
+
+                    <form th:action="@{/nudgeList}">
+                        <input type="submit" value="Back to List of Nudges" style="color:blue" />
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+<!--        Main Content End-->
+
+    <div th:replace="~{Fragments/NavRight}"></div>
+
+</div>
+
+</div>
+<!--    Container END-->
+</main>
+</body>
+
+<div th:replace="~{Fragments/footer}"></div>

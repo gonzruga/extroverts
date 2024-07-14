@@ -1,0 +1,56 @@
+<div th:replace="~{Fragments/head}"></div>
+
+<body>
+
+<div th:replace="~{Fragments/MainNavbar}"></div>
+
+<main>
+<!--    Container START-->
+    <div class="container">
+        <!--    Row  START-->
+        <div class="row g-4">
+            <div th:replace="~{Fragments/NavLeft}"></div>
+
+            <!--        Main Content START-->
+            <div class="col-md-8 col-lg-6 vstack gap-4">
+                <div class="gonza">
+
+                    <h3>EXTROVERTS SOCIAL NETWORK</h3>
+
+                    <h5>EXTROVERTS</h5>
+
+                    <a href="/users">All Extroverts (Users)</a> <br><br>
+                    <a href="/userForm">Add Yourself</a> <br><br>
+
+                    <h5>HOBBIES</h5>
+
+                    <a href="/hobbies">All Hobbies</a> <br><br>
+
+                    <h5>STEBBY</h5>
+
+                    <a href="/stebbies">All Stebby Services</a> <br><br>
+                    <a href="/stebbyForm">Add a Stebby Service</a> <br><br>
+
+                    <h5>TAGS</h5>
+                    <a href="/tagList">All Tags </a> <br><br>
+                    <a href="/tagForm">Add A Tag</a> <br><br>
+
+                    <h5>*NUDGES*</h5>
+                    <a href="/nudgeList">All Nudges </a> <br><br>
+
+                    <h5>*REVIEWS*</h5>
+                    <a href="/reviewList">All Reviews </a> <br><br>
+
+                    <a href="/logout">Logout</a>
+
+                    </div>
+                </div>
+            <!--        Main Content End-->
+            <div th:replace="~{Fragments/NavRight}"></div>
+        </div>
+        <!--    Row END-->
+    </div>
+<!--    Container END-->
+</main>
+</body>
+<div th:replace="~{Fragments/footer}"></div>

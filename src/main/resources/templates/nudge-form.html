@@ -1,0 +1,114 @@
+<div th:replace="~{Fragments/head}"></div>
+
+<body>
+
+<div th:replace="~{Fragments/MainNavbar}"></div>
+
+<main>
+
+    <!-- Container START -->
+    <div class="container">
+        <!-- Row START -->
+        <div class="row g-4">
+
+            <div th:replace="~{Fragments/NavLeft}"></div>
+
+            <!-- Main content START -->
+            <div class="col-md-8 col-lg-6 vstack gap-4">
+
+                <!-- Create a page START -->
+                <div class="card">
+                    <!-- Title START -->
+                    <div class="card-header border-0 pb-0">
+                        <h1 class="h4 card-title mb-0">Send a Nudge to an Extrovert</h1>
+                    </div>
+                    <!-- Title END -->
+
+<!--                    Details of Nudged user-->
+                    <div>
+                        <input type="hidden" th:value="${hostId}" name="hostId"/>
+
+                        <br>
+                        <p th:text="'Name: ' + ${user.firstName} + ' ' + ${user.secondName}" ></p>
+
+                        <p th:text="'Gender: ' + ${user.gender}" >
+                        <p th:text="'Origin: ' + ${user.origin.displayValue}" >
+
+
+                        <p th:text="'Profession: ' + ${user.profession}" >
+                        <p th:text="'Department: ' + ${user.department}" >
+
+                        <div> <a th:href="${user.getLinkedIn()}" target="_blank">LinkedIn</a> </div>
+<br>
+                        <p th:text="'Bio: ' + ${user.bio}" >
+
+                        <p th:text="'Stebby: '" >
+                        <div>
+                            <a th:href="@{/stebbyPage/{id}(id=${stebby.getId})}" th:each="stebby : ${user.stebbyList}" th:text="${stebby.service} + ' - €' + ${stebby.price} + ', '" target="_blank"> </a>
+                        </div>
+
+                    </div>
+
+                    <br>
+
+                    <!-- Form START -->
+                    <div class="card-body">
+                        <form id="nudgeForm" th:action="@{/nudgeSubmit}" th:object="${nudge}" method="POST" class="row g-3" >
+
+                            <!-- Hidden User ID -->
+                            <input type="hidden" th:value="${hostId}" name="hostId"/>
+
+                            <!-- Row 1:  -->
+                            <div class="col-12">
+                                <label for="personId" class="form-label">Your User ID (if registered): </label>
+                                <input type="text" class="form-control" id="personId" th:field="*{yourProfileId}" placeholder="Your profile Id (if you have one)">
+                            </div>
+
+                            <div class="col-sm-12 col-lg-12">
+                                <label for="contacts" class="form-label">Your Contacts (Name, telegram ID, phone, or email)</label>
+                                <input type="text" class="form-control" id="contacts" th:field="*{contacts}" placeholder="Contact details we should share with the person.">
+                            </div>
+
+                            <!-- Row 2:  -->
+                            <div class="col-sm-12 col-lg-12">
+                                <label for="comment" class="form-label">Comment (Request to be hosted or request for information)</label>
+                                <textarea row="4" cols="40" class="form-control" id="comment" th:field="*{comment}"></textarea>
+<!--                                <input type="text" class="form-control" id="comment" th:field="*{comment}">-->
+                            </div>
+
+                            <!-- Divider  -->
+                            <hr>
+
+                            <p>
+                                n the message to the host, please provide which contact information they should use to contact you.
+                            </p>
+
+                            <div class="col-12 text-end">
+                                <button type="submit" class="btn btn-primary mb-0">Send Nudge</button>
+                                <button type="reset" class="btn btn-primary mb-0">Reset</button>
+                            </div>
+
+                        </form>
+
+                </div>
+                    <!-- Form END -->
+
+                </div>
+                <!-- Create a page START -->
+
+            </div>
+            <!-- Main Content END-->
+
+            <div th:replace="~{Fragments/NavRight}"></div>
+
+        </div>
+        <!-- Row END -->
+
+    </div>
+    <!-- Container END -->
+
+</main>
+
+</body>
+
+<div th:replace="~{Fragments/footer}"></div>

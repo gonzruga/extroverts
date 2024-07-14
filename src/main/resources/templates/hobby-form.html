@@ -1,0 +1,123 @@
+<div th:replace="~{Fragments/head}"></div>
+
+<body>
+
+<div th:replace="~{Fragments/MainNavbar}"></div>
+
+<main>
+
+    <!-- Container START -->
+    <div class="container">
+        <!-- Row START -->
+        <div class="row g-4">
+
+            <div th:replace="~{Fragments/NavLeft}"></div>
+
+            <!-- Main content START -->
+            <div class="col-md-8 col-lg-6 vstack gap-4">
+
+                <!-- Create a page START -->
+                <div class="card">
+                    <!-- Title START -->
+                    <div class="card-header border-0 pb-0">
+                        <h1 class="h4 card-title mb-0">Add Your Favourite Hobby </h1>
+                    </div>
+                    <!-- Title END -->
+
+                    <!-- Form START -->
+                    <div class="card-body">
+                        <form id="hobbyForm" th:action="@{/hobbySubmit}" th:object="${hobby}" method="POST" enctype="multipart/form-data" class="row g-3" >
+
+
+                            <!-- Hidden Creator ID  - type=hidden | display=none-->
+                            <input type="hidden" th:value="${creatorId}" name="creatorId"/>
+
+                            <!-- Row 1:  -->
+                            <div class="col-6">
+                                <label for="title" class="form-label">Hobby name</label>
+                                <input type="text" class="form-control" id="title" th:field="*{title}" required placeholder="Name of the hobby">
+                            </div>
+
+                            <div class="col-sm-12 col-lg-6">
+                                <label for="serviceProvider" class="form-label">Service Provider</label>
+                                <input type="text" class="form-control" id="serviceProvider" th:field="*{serviceProvider}" placeholder="">
+                            </div>
+
+
+                            <!-- Row 2:  -->
+                            <div class="col-sm-12 col-lg-6">
+                                <label for="price" class="form-label">Cost</label>
+                                <input type="number" class="form-control" id="price" th:field="*{price}">
+                            </div>
+
+                            <!-- Row 3:  -->
+
+                            <div class="col-12">
+                                <label for="hobbyDescription" class="form-label">Hobby Description</label>
+<!--                                <input type="text" class="form-control" id="hobbyDescription" th:field="*{hobbyDescription}" rows="4" cols="40">-->
+
+                                <textarea class="form-control" id="hobbyDescription" th:field="*{hobbyDescription}" rows="4" cols="40"></textarea>
+                            </div>
+
+                            <div class="col-sm-12 col-lg-12">
+                                <label for="link" class="form-label">Link* (Website, social media)</label>
+                                <input type="text" class="form-control" id="link" th:field="*{link}" required placeholder="https://...">
+                            </div>
+
+                            <!-- Row 4:  -->
+                            <p>Tags</p>
+                            <p>Press CTRL to select multiple options at once.</p>
+                            <select multiple th:field="*{tagListHobby}">
+                                <option th:each="tag : ${allTagsHobby}" th:value="${tag.getId()}" th:text="${tag.tagTitle}">
+                                </option>
+                            </select>
+
+
+                            <!-- Row 5: Pictures  -->
+
+<!--                            <div class="col-lg-12">-->
+<!--                                <label class="form-label">hobby Picture 1</label><br>-->
+<!--                                <input type="file" multiple="false" name="imageFileOne" ><br>-->
+
+
+                            <!-- Divider  -->
+                            <hr>
+
+                            <p>
+                                When adding a hobby to your profile, it is required to provide a relevant link. Overall, we want users to prove they are extroverts and we do our best to verify to some extent. We want you to provide a link that ideally could provide concrete information about the hobby and as a bonus might contain a picture of you engaging in that hobby.
+                                The link could be:
+                            </p>
+                            <ul>
+                                <li>Website or social media of the company or community organizing the activity.</li>
+                                <li>Website or social media of a company, community, group or individual related to that activity. For example, if you like a certain sport, you can provide website url link of your faourite team. </li>
+                            </ul>
+
+                            <div class="col-12 text-end">
+                                <button type="submit" class="btn btn-primary mb-0">Add Hobby</button>
+                                <button type="reset" class="btn btn-primary mb-0">Reset</button>
+                            </div>
+
+                        </form>
+
+                </div>
+                    <!-- Form END -->
+
+                </div>
+                <!-- Create a page START -->
+
+            </div>
+            <!-- Main Content END-->
+
+            <div th:replace="~{Fragments/NavRight}"></div>
+
+        </div>
+        <!-- Row END -->
+
+    </div>
+    <!-- Container END -->
+
+</main>
+
+</body>
+
+<div th:replace="~{Fragments/footer}"></div>

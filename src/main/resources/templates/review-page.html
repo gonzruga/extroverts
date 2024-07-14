@@ -1,0 +1,68 @@
+<div th:replace="~{Fragments/head}"></div>
+
+<body>
+
+<div th:replace="~{Fragments/MainNavbar}"></div>
+
+<main>
+
+<div class="container">
+
+<div class="row g-4">
+
+        <div th:replace="~{Fragments/NavLeft}"></div>
+
+<!--        Main Content Start-->
+        <div class="col-md-8 col-lg-6 vstack gap-4">
+
+            <div class="card">
+
+                <div class="card-header border-0 pb-0">
+                    <h1 class="h4 card-title mb-0">REVIEW</h1>
+                    <br>
+                    <p th:text="'[Editing will be restricted to review author]'" >
+                </div>
+
+                <div class="card-body">
+
+<!--                    <p th:text="'ID: ' + ${review.id}" style="=display:none" />-->
+<!--                    <p th:text="'Review of: '+ ${review.getReviewee().firstName}" >-->
+                    <p th:text="'Review of: '+ ${review.reviewee.firstName}" >
+
+                    <p th:text="'Review: ' + ${review.content}"></p>
+                    <p th:text="'Your Name: ' + ${review.name}" >
+
+                    <!--                    Divider-->
+                    <hr>
+
+                    <form method="GET"
+                          th:action="@{/reviewEdit/{reviewId}(reviewId=${review.getId()})}"
+                          th:object="${review}">
+                        <input type="submit" value="Edit Review"/>
+                    </form>
+
+                    <form th:action="@{/reviewDelete/{id}(id=${review.id})}">
+                        <input type="submit" value="Delete Review" style="color:red" />
+                    </form>
+
+                    <form th:action="@{/reviewList}">
+                        <input type="submit" value="Back to List of Reviews" style="color:blue" />
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+<!--        Main Content End-->
+
+        <div th:replace="~{Fragments/NavRight}"></div>
+
+</div>
+
+</div>
+
+</main>
+</body>
+
+<div th:replace="~{Fragments/footer}"></div>

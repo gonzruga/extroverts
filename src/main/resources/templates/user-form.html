@@ -1,0 +1,176 @@
+<div th:replace="~{Fragments/head}"></div>
+<body>
+<div th:replace="~{Fragments/MainNavbar}"></div>
+<main>
+
+    <!-- Container START -->
+    <div class="container">
+        <div class="row g-4">
+            <div th:replace="~{Fragments/NavLeft}"></div>
+
+            <!-- Main content START -->
+            <div class="col-md-8 col-lg-6 vstack gap-4">
+                <!-- Create a page START -->
+                <div class="card">
+                    <!-- Title START -->
+                    <div class="card-header border-0 pb-0">
+                        <h1 class="h4 card-title mb-0">Create Extrovert Profile</h1>
+                    </div>
+                    <p>* Will not be displayed but will be used to assess recommendations</p>
+                    <!-- Title END -->
+
+                    <!-- Create a page form START -->
+                    <div class="card-body">
+                            <form th:action="@{/userCreate}" th:object="${user}" method="POST" enctype="multipart/form-data" class="row g-3" >
+
+                            <!-- Display name -->
+                            <div class="col-sm-6 col-lg-4">
+                                <label for="firstName" class="form-label">First name</label>
+                                <input type="text" class="form-control" id="firstName" th:field="*{firstName}" placeholder="">
+                            </div>
+                            <div class="col-sm-6 col-lg-4">
+                                <label for="secondName" class="form-label">Last name*</label>
+                                <input type="text" class="form-control" id="secondName" th:field="*{secondName}" placeholder="">
+                            </div>
+
+                            <div class="col-12">
+                                <label for="gender" class="form-label">Gender</label>
+                                    <select th:field="*{gender}" id="gender" class="form-control">
+                                    <option value="Male">Male</option>
+                                    <option value="Female">Female</option>
+                                </select>
+                            </div>
+
+                            <div class="col-12">
+                                <label class="form-label">Gender</label><br>
+                                <div>
+                                    <input type="radio" th:field="*{gender}" id="Male" value="Male">
+                                    <label for="MALE">Male</label>
+                                </div>
+                                <div>
+                                    <input type="radio" th:field="*{gender}" id="Female" value="Female">
+                                    <label for="Female">Female</label>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6 col-lg-4">
+                                <label for="email" class="form-label">Email*</label>
+                                <input type="text" class="form-control" id="email" th:field="*{userEmail}" >
+                            </div>
+
+                            <div class="col-lg-4">
+                                <label for="mobile" class="form-label">Mobile number*</label>
+                                <input type="text" class="form-control" id="mobile" th:field="*{mobile}" placeholder="Include + country code">
+                            </div>
+
+                            <div class="col-lg-4">
+                                <label for="telegram" class="form-label">Telegram handle*</label>
+                                <input type="text" class="form-control" id="telegram" th:field="*{telegram}" placeholder="">
+                            </div>
+
+                            <div class="col-lg-4">
+                                <label for="profession" class="form-label">Industry Profession</label>
+                                <input type="text" class="form-control" id="profession" th:field="*{profession}" placeholder="Banking, Technology, Hospitality, Healthcare, etc)">
+                            </div>
+
+                            <div class="col-lg-4">
+                                <label for="department" class="form-label">Department</label>
+                                <input type="text" class="form-control" id="department" th:field="*{department}" placeholder="Engineering, Admin, Marketing, etc">
+                            </div>
+
+                                <div class="col-lg-4">
+                                    <label for="linkedIn" class="form-label">LinkedIn</label>
+                                    <input type="text" class="form-control" id="linkedIn" th:field="*{linkedIn}" placeholder="Your LinkedIn profile URL">
+                                </div>
+
+                            <div class="col-lg-4">
+                                <label for="yob" class="form-label">Year of Birth*</label>
+                                <input type="number" class="form-control" id="yob" th:field="*{yob}" placeholder="">
+                            </div>
+
+                            <div class="col-lg-12">
+                                <label for="bio" class="form-label">Bio</label>
+                                <textarea rows="4" cols="20" class="form-control" id="bio" th:field="*{bio}" placeholder=""></textarea>
+
+<!--                                <input type="text" class="form-control" id="bio" th:field="*{bio}" placeholder="">-->
+                            </div>
+
+                            <div class="col-12">
+                                <label for="origin" class="form-label">Origin</label>
+                                <select th:field="*{origin}" id="origin" class="form-select">
+                                    <option value="Estonian">Estonian</option>
+                                    <option value="European">European</option>
+                                    <option value="South_American">South American</option>
+                                    <option value="North_American">North American</option>
+                                    <option value="African">African</option>
+                                    <option value="Asian">Asian</option>
+                                    <option value="Russian">Russian</option>
+                                    <option value="Others">Others</option>
+
+                                </select>
+                            </div>
+
+                            <div class="col-12">
+                                <label for="datingObjectives" class="form-label">Dating intentions*</label>
+                                <select th:field="*{datingObjectives}" id="datingObjectives" class="form-select">
+                                    <option value="Looking">I am looking</option>
+                                    <option value="Whatever">Whatever</option>
+                                    <option value="No">Not interested</option>
+                                </select>
+                            </div>
+
+<!--                            <div>-->
+<!--                                <label class="form-label">Profile Picture*:</label>-->
+<!--                                <input type="file" multiple="false" name="imageFile" >-->
+<!--                            </div>-->
+
+                            <p>Stebbies</p>
+                            <p>Press CTRL to select multiple options at once.</p>
+                            <select multiple th:field="*{stebbyList}">
+                                <option th:each="stebby : ${allStebbies}" th:value="${stebby.getId()}" th:text="${stebby.service}">
+                                </option>
+                            </select>
+
+                            <!-- Divider -->
+                            <hr>
+                            <h6>Informtion you may include in your bio (not a must): </h6>
+                            <p>
+                                Which exact activity you are willing to host (if not all that are on your profile) <br>
+                                Any limitations on your hosting i.e. time, day. <br>
+                                If you are willing to cover any costs for the person you are hosting. <br>
+                                Any other things you can help, for example:
+                                <ul>
+                                    <li>detailed information, schedule, etc.  </li>
+                                    <li>making reservations or buying tickets. </li>
+                                    <li>a ride to/from the activity. </li>
+                                </ul>
+                            </p>
+
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="allowChecked" checked="">
+                                <label class="form-check-label" for="allowChecked">
+                                    I agree to the terms & conditions
+                                </label>
+                            </div>
+
+                            <div class="col-12 text-end">
+                                <button type="submit" class="btn btn-primary mb-0">Register</button>
+                            </div>
+                        </form>
+                    </div>
+                    <!-- Create a page form END -->
+                </div>
+                <!-- Create a page END -->
+            </div>
+            <!--        Main Content End-->
+
+            <div th:replace="~{Fragments/NavRight}"></div>
+
+        </div>
+        <!-- Row END -->
+    </div>
+    <!-- Container END -->
+
+</main>
+</body>
+<div th:replace="~{Fragments/footer}"></div>

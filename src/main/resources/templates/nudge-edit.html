@@ -1,0 +1,68 @@
+<div th:replace="~{Fragments/head}"></div>
+
+<body>
+
+<div th:replace="~{Fragments/MainNavbar}"></div>
+
+<main>
+
+<div class="container">
+
+<div class="row g-4">
+
+        <div th:replace="~{Fragments/NavLeft}"></div>
+
+<!--        Main Content Start-->
+    <div class="col-md-8 col-lg-6 vstack gap-4">
+
+        <div class="card">
+
+            <div class="card-header border-0 pb-0">
+                <h1 class="h4 card-title mb-0">EDIT HOST REQUEST</h1>
+                <p th:text="'Edit the host details below:'" />
+            </div>
+
+            <div class="card-body">
+
+                <!-- TODO: Edit access to be restricted only to respective user who created the business. Spring Boot Security-->
+
+                <form th:action="@{/nudgeUpdate/{id}(id=${nudge.id})}" th:object="${nudge}" method="post">
+
+<!--                    <p th:text="'ID: (*To be hidden) ' + *{id}">-->
+
+                    <p>Host requestor ID: <input type="text" th:field="*{udge.yourProfileId}" /></p>
+                    <p>Requestor Contacts: <input type="email" th:field="*{nudge.contacts}" /></p>
+
+                    <p>Nudge Comment: <input type="email" th:field="*{nudge.comment}" /></p>
+
+                    <p>Nudge Comment: <input type="email" th:field="*{nudge.comment}" /></p>
+
+                    <p>Host Id: <input type="text" th:field="*{nudge.subjectId}" /></p>
+                    <p>Host Name: <input type="text" th:field="*{nudge.subjectName}" /></p>
+
+                    <br><br>
+
+                    <button type="submit"> Submit </button>
+
+                    <button type="button" style="color:red">
+                        <a th:href="@{/nudgePage/{id}(id=${nudge.id})}">Cancel</a>
+                    </button>
+
+                </form>
+            </div>
+
+        </div>
+
+    </div>
+<!--        Main Content End-->
+
+    <div th:replace="~{Fragments/NavRight}"></div>
+
+</div>
+
+</div>
+
+</main>
+</body>>
+
+<div th:replace="~{Fragments/footer}"></div>
