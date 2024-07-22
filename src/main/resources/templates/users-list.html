@@ -27,15 +27,17 @@
             <dl th:each="user : ${user}" class="card position-relative">
 
 <!--                <dd><a class="stretched-link" th:href="@{userPage/{id}(id=${user.id})}"><b th:text="${user.firstName}"></b></a></dd>-->
-<!--                <dd><span th:text="'User ID: '+ ${user.id}"></span></dd>-->
 
                 <dd><a th:href="@{userPage/{id}(id=${user.id})}"><b th:text="${user.firstName} + ' ' + ${user.secondName} "></b></a></dd>
+
+                <dd><span th:text="'User ID: '+ ${user.id}"></span>
+
                 <dd><span th:text="${user.gender}"></span></dd>
                 <dd><span th:text="${user.origin.displayValue}"></span></dd>
 
                 <dd><span th:text="'Industry Profession: ' + ${user.profession}"></span></dd>
                 <dd><span th:text="'Department: ' + ${user.department}"></span></dd>
-                <dd><a th:href="${user.getLinkedIn()}" target="_blank">Profile</a></dd>
+                <dd><a th:href="${user.getLinkedIn()}" target="_blank">Social Media</a></dd>
 
                 <dd> <span th:text="'Hobby: '"></span>
                     <div>

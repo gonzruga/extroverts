@@ -16,7 +16,7 @@
                     <div class="card-header border-0 pb-0">
                         <h1 class="h4 card-title mb-0">Create Extrovert Profile</h1>
                     </div>
-                    <p>* Will not be displayed but will be used to assess recommendations</p>
+                    <p>* Will not be displayed. ** Hidden and used to assess recommendations</p>
                     <!-- Title END -->
 
                     <!-- Create a page form START -->
@@ -29,23 +29,23 @@
                                 <input type="text" class="form-control" id="firstName" th:field="*{firstName}" placeholder="">
                             </div>
                             <div class="col-sm-6 col-lg-4">
-                                <label for="secondName" class="form-label">Last name*</label>
+                                <label for="secondName" class="form-label">Last name</label>
                                 <input type="text" class="form-control" id="secondName" th:field="*{secondName}" placeholder="">
                             </div>
 
-                            <div class="col-12">
-                                <label for="gender" class="form-label">Gender</label>
-                                    <select th:field="*{gender}" id="gender" class="form-control">
-                                    <option value="Male">Male</option>
-                                    <option value="Female">Female</option>
-                                </select>
-                            </div>
+<!--                            <div class="col-12">-->
+<!--                                <label for="gender" class="form-label">Gender</label>-->
+<!--                                    <select th:field="*{gender}" id="gender" class="form-control">-->
+<!--                                    <option value="Male">Male</option>-->
+<!--                                    <option value="Female">Female</option>-->
+<!--                                </select>-->
+<!--                            </div>-->
 
                             <div class="col-12">
                                 <label class="form-label">Gender</label><br>
                                 <div>
                                     <input type="radio" th:field="*{gender}" id="Male" value="Male">
-                                    <label for="MALE">Male</label>
+                                    <label for="Male">Male</label>
                                 </div>
                                 <div>
                                     <input type="radio" th:field="*{gender}" id="Female" value="Female">
@@ -55,7 +55,7 @@
 
                             <div class="col-sm-6 col-lg-4">
                                 <label for="email" class="form-label">Email*</label>
-                                <input type="text" class="form-control" id="email" th:field="*{userEmail}" >
+                                <input type="text" class="form-control" id="email" th:field="*{userEmail}" required>
                             </div>
 
                             <div class="col-lg-4">
@@ -63,10 +63,10 @@
                                 <input type="text" class="form-control" id="mobile" th:field="*{mobile}" placeholder="Include + country code">
                             </div>
 
-                            <div class="col-lg-4">
-                                <label for="telegram" class="form-label">Telegram handle*</label>
-                                <input type="text" class="form-control" id="telegram" th:field="*{telegram}" placeholder="">
-                            </div>
+<!--                            <div class="col-lg-4">-->
+<!--                                <label for="telegram" class="form-label">Telegram handle*</label>-->
+<!--                                <input type="text" class="form-control" id="telegram" th:field="*{telegram}" placeholder="">-->
+<!--                            </div>-->
 
                             <div class="col-lg-4">
                                 <label for="profession" class="form-label">Industry Profession</label>
@@ -83,10 +83,10 @@
                                     <input type="text" class="form-control" id="linkedIn" th:field="*{linkedIn}" placeholder="Your LinkedIn profile URL">
                                 </div>
 
-                            <div class="col-lg-4">
-                                <label for="yob" class="form-label">Year of Birth*</label>
-                                <input type="number" class="form-control" id="yob" th:field="*{yob}" placeholder="">
-                            </div>
+<!--                            <div class="col-lg-4">-->
+<!--                                <label for="yob" class="form-label">Year of Birth*</label>-->
+<!--                                <input type="number" class="form-control" id="yob" th:field="*{yob}" placeholder="">-->
+<!--                            </div>-->
 
                             <div class="col-lg-12">
                                 <label for="bio" class="form-label">Bio</label>
@@ -141,8 +141,8 @@
                                 Any other things you can help, for example:
                                 <ul>
                                     <li>detailed information, schedule, etc.  </li>
-                                    <li>making reservations or buying tickets. </li>
-                                    <li>a ride to/from the activity. </li>
+                                    <li>making reservations. </li>
+<!--                                    <li>a ride to/from the activity. </li>-->
                                 </ul>
                             </p>
 

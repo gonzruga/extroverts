@@ -11,6 +11,7 @@ import org.hibernate.annotations.UpdateTimestamp;
 import java.util.Date;
 import java.util.List;
 import java.util.Set;
+import java.util.UUID;
 
 @Getter
 @Setter
@@ -19,10 +20,13 @@ import java.util.Set;
 @RequiredArgsConstructor
 public class User {
 
+//    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    @Column(name="id", nullable = false)
-    private Long id;
+    @GeneratedValue(generator = "UUID")
+    @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
+    @Column(name="id", columnDefinition = "BINARY(16)", nullable = false, updatable = false)
+    private UUID id;
 
     private String firstName;
     private String secondName;

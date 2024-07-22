@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.Date;
+import java.util.UUID;
 
 @Getter
 @Setter
@@ -20,7 +21,7 @@ public class ReviewDto {
     private String content;
     private String name;
 
-    private Long revieweeId;   //Only here, used in reviewSubmit
+    private UUID revieweeId;   //Only here, used in reviewSubmit
     private User reviewee; //Used in ReviewController: 'reviewSubmit'
 
     private Date createdAt = new Date();

@@ -18,7 +18,7 @@ public class Nudge {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name="id", nullable = false)
+    @Column(name="id", nullable = false, updatable = false)
     private Long id;
 
     private int yourProfileId;

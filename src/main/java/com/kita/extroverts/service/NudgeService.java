@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
@@ -28,7 +29,7 @@ public class NudgeService {
 
     public List<Nudge> listNudges() { return repository.findAll(); }
 
-    public List<Nudge> getUserNudges(Long NudgedUserId) {
+    public List<Nudge> getUserNudges(UUID NudgedUserId) {
         return repository.findAllByNudgedUserId(NudgedUserId);
 
     }

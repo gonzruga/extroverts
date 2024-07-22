@@ -84,7 +84,7 @@
                             <hr>
 
                             <p>
-                                When adding a hobby to your profile, it is required to provide a relevant link. Overall, we want users to prove they are extroverts and we do our best to verify to some extent. We want you to provide a link that ideally could provide concrete information about the hobby and as a bonus might contain a picture of you engaging in that hobby.
+                                When adding a hobby to your profile, it is required to provide a relevant link. Overall, we want users to prove they are extroverts and we do our best to verify to some extent. We want you to provide a link that ideally could provide concrete information about the hobby and relevant pictures.
                                 The link could be:
                             </p>
                             <ul>
@@ -95,6 +95,9 @@
                             <div class="col-12 text-end">
                                 <button type="submit" class="btn btn-primary mb-0">Add Hobby</button>
                                 <button type="reset" class="btn btn-primary mb-0">Reset</button>
+                                <button type="button" style="color:red">
+                                    <a th:href="@{/hobbies}">Cancel</a>
+                                </button>
                             </div>
 
                         </form>

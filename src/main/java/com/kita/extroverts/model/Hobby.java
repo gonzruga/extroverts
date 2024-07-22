@@ -19,8 +19,8 @@ import java.util.List;
 public class Hobby {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name="id", nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="id", nullable = false, updatable = false)
     private Long id;
 
     private String title;
@@ -32,7 +32,7 @@ public class Hobby {
 //    private Long creatorId;
 
     @ManyToOne
-    @JoinColumn(name = "creator_id")
+    @JoinColumn(name = "creator_id", columnDefinition = "BINARY(16)")
     private User hobbyCreator;
 
 //    @ElementCollection   //This ensures that JPA handles the collection mapping appropriately.

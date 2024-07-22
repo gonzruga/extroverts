@@ -17,6 +17,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.UUID;
 
 @Slf4j
 @Controller
@@ -38,7 +39,7 @@ public class HobbyController {
 
     @GetMapping("/hobbyForm/{creatorId}")
     public String hobbyForm (
-                             @PathVariable(name="creatorId") Long creatorId,
+                             @PathVariable(name="creatorId") UUID creatorId,
                              Model model){
         HobbyDto hobby = new HobbyDto();
         model.addAttribute("hobby", hobby);
@@ -48,12 +49,12 @@ public class HobbyController {
     }
 
     @PostMapping("/hobbySubmit")
-    public String hobbySubmit (@ModelAttribute HobbyDto hobby, Model model, @RequestParam("creatorId") Long creatorId) {
+    public String hobbySubmit (@ModelAttribute HobbyDto hobby, Model model, @RequestParam("creatorId") UUID creatorId) {
 
         model.addAttribute("hobby", hobby);
 
 //        model.addAttribute("creatorId", creatorId); //Add to model before redirect
-        Long id = creatorId; // Assign creatorId to a new parameter 'id'
+        UUID id = creatorId; // Assign creatorId to a new parameter 'id'
         model.addAttribute("id", id); //Add to model before redirect
 
         hobby.setHobbyCreator(userService.getUserById(id));
@@ -86,7 +87,7 @@ public class HobbyController {
 
     @GetMapping("/hobbies") //With filter
     public String findAllHobbies(Model model, @Param("keyword") String keyword) {
-        log.debug("Received keyword: {}", keyword);
+//        log.debug("Received keyword: {}", keyword);
         model.addAttribute("hobby", service.listAll(keyword));
         model.addAttribute("keyword", keyword);
         return "hobby-list";
@@ -112,7 +113,7 @@ public class HobbyController {
     @GetMapping("/hobbyDelete/{id}")
     public String deleteHobby(@PathVariable long id) {
         service.deleteHobby(id);
-        return "redirect:/hobby-list";
+        return "redirect:/hobbies";
     }
 
 }

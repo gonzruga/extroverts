@@ -1,0 +1,66 @@
+<div th:replace="~{Fragments/head}" xmlns="http://www.w3.org/1999/html"></div>
+<body>
+<div th:replace="~{Fragments/MainNavbar}"></div>
+<main>
+<!--    Container START-->
+<div class="container">
+
+<!--    Row  START-->
+    <div class="row g-4">
+
+        <div th:replace="~{Fragments/NavLeft}"></div>
+
+<!--        Main Content START-->
+        <div class="col-md-8 col-lg-6 vstack gap-4">
+
+
+        <h3> SEARCH FOR YOUR USER PAGE</h3>
+
+            <p th:text="'Insert your unique user id to go to your page:'"/>
+
+            <form th:action="@{/userPage/{id}(id=${user.id})}" th:object="${user}" method="POST">
+
+                <label for="id" class="form-label">User ID:</label>
+                <p> <input type="text" class="form-control" th:field="*{id}" id="id" placeholder="Insert your unique user id" label="id" /></p>
+
+                <br>
+
+                <button type="submit">Submit</button>
+
+                <button type="button" style="color:red">
+                    <a th:href="@{/userPage/{id}(id=${user.id})}">Cancel</a>
+                </button>
+
+                <input type="reset" value="Reset" />
+
+
+            </form>
+
+            <form th:action=""}" method="POST">
+
+                <label for="id" class="form-label">User ID:</label>
+                <p> <input  /></p>
+
+                <br>
+
+                <button type="submit">Submit</button>
+
+                <input type="reset" value="Reset" />
+
+
+            </form>
+
+        </div>
+<!--        Main Content End-->
+
+        <div th:replace="~{Fragments/NavRight}"></div>
+
+    </div>
+<!--    Row END-->
+
+</div>
+<!--    Container END-->
+
+</main>
+</body>
+<div th:replace="~{Fragments/footer}"></div>

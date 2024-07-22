@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.util.UUID;
+
 @Slf4j
 @Controller
 @RequiredArgsConstructor
@@ -29,7 +31,7 @@ public class NudgeController {
 
     @GetMapping("/nudgeForm/{hostId}")
     public String nudgeForm(
-            @PathVariable(name="hostId") Long hostId,
+            @PathVariable(name="hostId") UUID hostId,
             Model model){
         Nudge nudge = new Nudge();
         model.addAttribute("hostId", hostId);
@@ -46,7 +48,7 @@ public class NudgeController {
     }
 
     @PostMapping("/nudgeSubmit")
-    public String saveNudge(@ModelAttribute NudgeDto nudge, Model model, Long hostId) {
+    public String saveNudge(@ModelAttribute NudgeDto nudge, Model model, UUID hostId) {
         model.addAttribute("nudge", nudge);
         nudge.setNudgedUser(userService.getUserById(hostId));
 //        nudge.setNudgedUserId(hostId);

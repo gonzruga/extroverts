@@ -64,7 +64,7 @@ public class StebbyController {
 
     @GetMapping("/stebbies") //With filter
     public String findAllStebbies(Model model, @Param("keyword") String keyword) {
-        log.debug("Received keyword: {}", keyword);
+//        log.debug("Received keyword: {}", keyword);
         model.addAttribute("stebby", service.listAll(keyword));
         model.addAttribute("keyword", keyword);
         return "stebby-list";

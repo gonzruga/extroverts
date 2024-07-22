@@ -11,6 +11,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.UUID;
+
 
 //@RestController  // Data
 //@AllArgsConstructor
@@ -29,7 +31,7 @@ public class ReviewController {
 
     @GetMapping("/reviewForm/{revieweeId}/{revieweeName}")
     public String reviewForm(
-            @PathVariable(name="revieweeId") Long revieweeId, @PathVariable(name="revieweeName") String revieweeName,
+            @PathVariable(name="revieweeId") UUID revieweeId, @PathVariable(name="revieweeName") String revieweeName,
             Model model
     ) {
         Review review = new Review();
@@ -40,10 +42,10 @@ public class ReviewController {
     }
 
     @PostMapping("/reviewSubmit")
-    public String reviewSubmit(@ModelAttribute ReviewDto review, Model model, @RequestParam("revieweeId") Long revieweeId) {
+    public String reviewSubmit(@ModelAttribute ReviewDto review, Model model, @RequestParam("revieweeId") UUID revieweeId) {
         model.addAttribute("review", review);  // Name & value of attribute.
-        log.info("{}",revieweeId);
-        Long id = revieweeId;
+//        log.info("{}",revieweeId);  // .info error
+        UUID id = revieweeId;
         model.addAttribute("id", id);
 //        model.addAttribute("revieweeId", revieweeId);
 //        review.setReviewee(userService.getUserById(revieweeId));

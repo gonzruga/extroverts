@@ -11,6 +11,7 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 @Getter
 @Setter
@@ -25,7 +26,7 @@ public class HobbyDto {
     private String hobbyDescription;
     private String link;
 
-    private Long creatorId;
+    private UUID creatorId;
     private User hobbyCreator;
 
     private List<Tag> tagListHobby;

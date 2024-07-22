@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 @Slf4j
 @Service
@@ -24,7 +25,7 @@ public class UserService {
     public User saveUser(UserDto user) {return repository.save(user.dtoToUser());}
 
     // READ - GET
-    public User getUserById(long id) {return repository.findById(id).orElse(null);}
+    public User getUserById(UUID id) {return repository.findById(id).orElse(null);}
 
     public List<User> getUsers() {return repository.findAll();}
 
@@ -65,7 +66,7 @@ public class UserService {
     }
     // DELETE
 
-    public String deleteUser(long id){
+    public String deleteUser(UUID id){
 //        repository.deleteAllById(Collections.singleton(id));
 //        TODO: Revise/review logs
         log.info("Removing user with ID number: " + id);

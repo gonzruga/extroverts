@@ -12,13 +12,14 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 @Getter
 @Setter
 @ToString
 public class UserDto {
 
-    private Long id;
+    private UUID id;
 
     private String firstName;
     private String secondName;
@@ -59,7 +60,16 @@ public class UserDto {
         user.setId(id);
         user.setFirstName(firstName);
         user.setSecondName(secondName);
-        user.setGender(User.Gender.valueOf(gender));
+
+        if (this.gender != null && !this.gender.isEmpty()) {
+            try {
+                user.setGender(User.Gender.valueOf(this.gender));
+            } catch (IllegalArgumentException e) {
+                // Handle invalid gender value
+                user.setGender(null);
+            }
+        }
+        //        user.setGender(User.Gender.valueOf(gender));
         user.setUserEmail(userEmail);
         user.setMobile(mobile);
         user.setTelegram(telegram);
@@ -69,8 +79,21 @@ public class UserDto {
         user.setYob(yob);
         user.setBio(bio);
 
-        user.setOrigin(User.Origin.fromDisplayValue(origin));
-        user.setDatingObjectives(User.DatingObjectives.valueOf(datingObjectives));
+        if (this.origin != null && !this.origin.isEmpty()) {
+            user.setOrigin(User.Origin.fromDisplayValue(origin));
+        }
+//        user.setOrigin(User.Origin.fromDisplayValue(origin));
+
+//        user.setDatingObjectives(User.DatingObjectives.valueOf(datingObjectives));
+        if (this.datingObjectives != null && !this.datingObjectives.isEmpty()) {
+            try {
+                user.setDatingObjectives(User.DatingObjectives.valueOf(datingObjectives));
+            } catch (IllegalArgumentException e) {
+                // Handle invalid datingObjectives value
+                user.setDatingObjectives(null);
+            }
+        }
+
 
         user.setProfilePicUrl(profilePicUrl);
 
