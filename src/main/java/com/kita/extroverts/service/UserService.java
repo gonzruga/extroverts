@@ -69,9 +69,9 @@ public class UserService {
     public String deleteUser(UUID id){
 //        repository.deleteAllById(Collections.singleton(id));
 //        TODO: Revise/review logs
-        log.info("Removing user with ID number: " + id);
+//        log.info("Removing user with ID number: " + id);
         repository.deleteById(id);
-        log.info("User removed with ID number: " + id);
+//        log.info("User removed with ID number: " + id);
         return "User removed with ID number: " + id;
     }
 
