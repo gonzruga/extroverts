@@ -14,7 +14,6 @@ import java.util.Date;
 
 @Getter
 @Setter
-@Table(name="nudge")
 @RequiredArgsConstructor
 public class NudgeDto {
 

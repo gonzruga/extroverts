@@ -1,0 +1,49 @@
+<div th:replace="~{Fragments/head}"></div>
+
+<body>
+</main>
+
+<div th:replace="~{Fragments/MainNavbar}"></div>
+
+<main>
+
+    <!--    Container START -->
+
+    <div class="container">
+
+        <!--    Row  START  -->
+        <div class="row g-4">
+
+            <div th:replace="~{Fragments/NavLeft}"></div>
+
+            <!--        Main Content START  -->
+            <div class="col-md-8 col-lg-6 vstack gap-4">
+
+
+                <div>
+                    <h3>SUBMITED MESSAGE</h3>
+                    <p th:text="'Welcome! Below is the message you have posted.'" />
+
+                    <p th:text="${message.id}" />
+                    <p th:text="${message.content}" />
+                    <input type="hidden" th:value="${chatId}" name="chatId" />
+                    <form th:action="@{'/chatPage/'+ ${chatId}}" method="get" >
+<!--                    <form th:action="@{/chatPage/${chatId}}" >-->
+                        <input type="submit" value="Back to Chat" />
+                    </form>
+                </div>
+
+            </div>
+            <!--        Main Content End    -->
+
+            <div th:replace="~{Fragments/NavRight}"></div>
+
+        </div>
+        <!--    Row END -->
+
+    </div>
+    <!--    Container END   -->
+</main>
+</body>
+
+<div th:replace="~{Fragments/footer}"></div>

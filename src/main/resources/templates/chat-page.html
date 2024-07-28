@@ -1,0 +1,104 @@
+<div th:replace="~{Fragments/head}"></div>
+
+<body>
+<div th:replace="~{Fragments/MainNavbar}"></div>
+<main>
+<!--    Container START-->
+<div class="container">
+
+    <div class="row g-4">
+
+        <div th:replace="~{Fragments/NavLeft}"></div>
+
+<!--        Main Content Start-->
+        <div class="col-md-8 col-lg-6 vstack gap-4">
+
+            <div class="card">
+
+                <div class="card-header border-0 pb-0">
+                    <h1 class="h4 card-title mb-0">CHAT PAGE</h1>
+                </div>
+
+                <div class="card-body">
+
+<!--                    <p th:utext="'Chat Participants: <strong>' + ${chat.title} + '</strong>'"></p>-->
+
+                    <p>Chat Participants: <strong th:text="${chat.title}"></strong></p>
+
+                    <p th:text="'Chat ID: ' + ${chat.id}" ></p>
+
+                    <form action="#" th:action="@{/messageForm/{chatId}(chatId=${chat.id})}" method="get">
+                        <input type="submit" value="Add Message"  />
+                    </form>
+
+                    <button class="bookmark-btn" onclick="bookmarkPage()">Bookmark this page</button>
+                    <br>
+                    <br>
+
+<!--                    <form th:action="@{/chatEdit/{id}(id=${chat.id})}" th:object="${chat}" method="GET">-->
+<!--                        <input type="submit" value="Edit" />-->
+<!--                    </form>-->
+
+<!--                    <form th:action="@{/chatDelete/{id}(id=${chat.id})}">-->
+<!--                        <input type="submit" value="Delete" style="color:red" />-->
+<!--                    </form>-->
+
+<!--                    <form th:action="@{/chatList}">-->
+<!--                        <input type="submit" value="Back to List of Chats" style="color:blue" />-->
+<!--                    </form>-->
+
+                    <b>Messages:</b><br><br>
+
+                    <dl th:each="message : ${chat.messages}">
+                        <dd> <span th:text="${message.getContent()}"></span> </dd>
+
+<!--                        <dd>-->
+<!--                            <a th:href="@{/messagePage/{id}(id=${message.id})}">-->
+<!--                                <span th:text="${message.getContent()}" style="color:blue"></span>-->
+<!--                            </a>-->
+<!--                        </dd>-->
+
+                        <hr>
+                    </dl>
+
+
+                </div>
+
+            </div>
+
+        </div>
+<!--        Main Content End-->
+
+    <div th:replace="~{Fragments/NavRight}"></div>
+
+</div>
+
+</div>
+<!--    Container END-->
+</main>
+
+<script>
+    function bookmarkPage() {
+        var bookmarkURL = window.location.href;
+        var bookmarkTitle = document.title;
+
+        if (window.sidebar && window.sidebar.addPanel) { // Firefox <=22
+            window.sidebar.addPanel(bookmarkTitle, bookmarkURL, '');
+        } else if ((window.sidebar && navigator.userAgent.toLowerCase().indexOf('firefox') > -1) || (window.opera && window.print)) { // Firefox 23+ and Opera
+            var link = document.createElement('a');
+            link.href = bookmarkURL;
+            link.title = bookmarkTitle;
+            link.rel = 'sidebar';
+            link.innerHTML = 'Bookmark';
+            link.click();
+        } else if (window.external && ('AddFavorite' in window.external)) { // IE Favorite
+            window.external.AddFavorite(bookmarkURL, bookmarkTitle);
+        } else { // WebKit - Safari/Chrome
+            alert('Press ' + (navigator.userAgent.toLowerCase().indexOf('mac') != -1 ? 'Cmd' : 'Ctrl') + '+D to bookmark this page.');
+        }
+    }
+</script>
+
+</body>
+
+<div th:replace="~{Fragments/footer}"></div>

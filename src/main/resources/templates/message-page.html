@@ -1,0 +1,56 @@
+<div th:replace="~{Fragments/head}"></div>
+
+<body>
+<div th:replace="~{Fragments/MainNavbar}"></div>
+<main>
+<!--    Container START-->
+<div class="container">
+
+    <div class="row g-4">
+
+        <div th:replace="~{Fragments/NavLeft}"></div>
+
+<!--        Main Content Start-->
+        <div class="col-md-8 col-lg-6 vstack gap-4">
+
+            <div class="card">
+
+                <div class="card-header border-0 pb-0">
+                    <h1 class="h4 card-title mb-0">MESSAGE PAGE</h1>
+                </div>
+
+                <div class="card-body">
+
+                    <p th:text="'Message ID: ' + ${message.id}" > <br>
+
+                    <p th:text="'Message: ' + ${message.content}" > <br>
+
+<!--                    <form th:action="@{/messageEdit/{id}(id=${message.id})}" th:object="${message}" method="GET">-->
+<!--                        <input type="submit" value="Edit" />-->
+<!--                    </form>-->
+
+<!--                    <form th:action="@{/messageDelete/{id}(id=${message.id})}">-->
+<!--                        <input type="submit" value="Delete" style="color:red" />-->
+<!--                    </form>-->
+
+                    <form th:action="@{/messageList}">
+                        <input type="submit" value="Back to List of Messages" style="color:blue" />
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+<!--        Main Content End-->
+
+    <div th:replace="~{Fragments/NavRight}"></div>
+
+</div>
+
+</div>
+<!--    Container END-->
+</main>
+</body>
+
+<div th:replace="~{Fragments/footer}"></div>

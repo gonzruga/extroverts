@@ -49,9 +49,7 @@ public class UserDto {
 
     private List<Stebby> stebbyList;
 
-    @CreationTimestamp
     private Date createdAt  = new Date();
-    @UpdateTimestamp
     private Date updatedAt = null;
 
     public User dtoToUser(){

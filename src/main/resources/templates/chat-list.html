@@ -1,0 +1,77 @@
+<div th:replace="~{Fragments/head}"></div>
+
+<body>
+
+<div th:replace="~{Fragments/MainNavbar}"></div>
+
+<main>
+
+<!-- Container START -->
+
+<div class="container">
+
+  <!-- Row START -->
+    <div class="row g-4">
+
+      <!-- Left sidebarLeft -->
+      <div th:replace="~{Fragments/NavLeft}"></div>
+
+      <!-- Main content START -->
+      <div class="col-md-8 col-lg-6 vstack gap-4">
+
+            <!-- Card feed item START -->
+            <div class="row g-3 mb-4">
+
+                <div class="d-sm-flex justify-content-between align-items-center">
+                    <h5 class="mb-md-0"> LIST OF CHATS</h5>
+                </div>
+
+                <div>
+                    <form th:action="@{chatList}">
+                        <a href="/chatForm">Add A Chat</a> <br><br>
+                    </form>
+                </div>
+
+                <!-- START CARDS DIV -->
+                <div class="col-sm-6 col-md-4 col-xl-4 col-xxl-4">
+
+                    <dl th:each="chat : ${chats}" class="card position-relative">
+
+<!--                    Removed class="stretched-link" because it applies to all tags. TODO: Debbuging-->
+
+                        <dd> <a th:href="@{/chatPage/{chatId}(chatId=${chat.id})}"><span th:text="${chat.title}"></span></a> </dd>
+                        <dd><span th:text="${chat.id}"></span></dd>
+                    </dl>
+
+                </div>
+
+            </div>
+            <!-- Card feed item END -->
+
+
+        </div>
+      <!-- Main content END -->
+
+      <!-- Right sidebarRight -->
+      <div th:replace="~{Fragments/NavRight}"></div>
+
+  </div>
+  <!-- Row END -->
+</div>
+
+
+<!-- Container END -->
+
+</main>
+
+<script>
+    type="text/javascript">
+        function clearFilter() {
+            window.location = '/tagList';
+        }
+</script>
+
+</body>
+
+<div th:replace="~{Fragments/footer}"></div>
+

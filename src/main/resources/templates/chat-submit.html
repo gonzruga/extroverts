@@ -1,0 +1,52 @@
+<div th:replace="~{Fragments/head}"></div>
+
+<body>
+</main>
+
+<div th:replace="~{Fragments/MainNavbar}"></div>
+
+<main>
+
+    <!--    Container START -->
+
+    <div class="container">
+
+        <!--    Row  START  -->
+        <div class="row g-4">
+
+            <div th:replace="~{Fragments/NavLeft}"></div>
+
+            <!--        Main Content START  -->
+            <div class="col-md-8 col-lg-6 vstack gap-4">
+
+
+                <div>
+                    <h3>SUBMITED CHAT</h3>
+                    <p th:text="'Welcome! Below is the chat details.'" />
+
+                    <p th:text="${chat.id}" />
+                    <p th:text="${chat.title}" />
+
+                    <!--<p th:text="'Submited by: ' + ${chat.chatCreatorName}" />-->
+
+                    <form th:action="@{/chatList}" >
+                        <input type="submit" value="Chats" />
+                    </form>
+
+
+                </div>
+
+            </div>
+            <!--        Main Content End    -->
+
+            <div th:replace="~{Fragments/NavRight}"></div>
+
+        </div>
+        <!--    Row END -->
+
+    </div>
+    <!--    Container END   -->
+</main>
+</body>
+
+<div th:replace="~{Fragments/footer}"></div>

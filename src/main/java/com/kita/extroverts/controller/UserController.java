@@ -62,33 +62,22 @@ public class UserController {
         return "users-list";
     }
 
-    @GetMapping("/user/{id}")
-    public User findUserById(@PathVariable UUID id) {
-        return service.getUserById(id);
-    }
-
     @GetMapping("/userPage/{id}")
     public String userPage(@PathVariable UUID id, Model model) {
         User userById = service.getUserById(id);
         model.addAttribute("user", userById);
         return "user-page";
     }
-//        model.addAttribute("hobby", hobby);
-//        Hobby hobby = hobbyService.findHobbyByCreatorId(id);
-//        if (hobby != null) {
-//            model.addAttribute("hobby", hobby);
-//        } else {
-//            // Handle the case where no hobby is found
-//            model.addAttribute("message", "No hobby found for this user.");
-//        }
-
-//        model.addAttribute("id", id);
-
 
     @GetMapping("/userSearch")
     public String userSearch(Model model){
         model.addAttribute("user", new User());
         return "user-page-search";
+    }
+
+    @PostMapping("/userSearched")
+    public String searchUser(@RequestParam UUID id) {
+        return "redirect:/userPage/" + id;
     }
 
     // UPDATE - PUT
@@ -109,7 +98,7 @@ public class UserController {
         user.setStebbyList(savedStebbies);
 
         service.updateUser(user);
-        return "redirect:/users";
+        return "redirect:/userPage/" + id;
 //        return "redirect:/userPage/{id}";
     }
 

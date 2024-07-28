@@ -14,18 +14,17 @@
         <div class="col-md-8 col-lg-6 vstack gap-4">
 
 
-        <h3> SEARCH FOR YOUR USER PAGE</h3>
+        <h3> CREATE A MESSAGE</h3>
 
-            <p th:text="'Insert your unique user id to go to your page:'"/>
+            <p th:text="'Create a message that does not exist. '"/>
 
-            <form th:action="@{/userSearched}" method="POST">
-                <label for="id" class="form-label">User ID:</label>
-                <p> <input type="text" class="form-control" name="id" id="id" required placeholder="Insert your unique user id" label="id" /></p>
+            <form th:action="@{/messageSubmit}" th:object="${message}" method="POST">
+                <!-- Hidden ChatRoom ID  - type=hidden | display=none-->
+                <input type="hidden" th:value="${chatId}" name="chatId" />
+                <label for="content">Message Content:</label>
+                <p> <textarea rows="2" cols="40" th:field="*{content}" id="content" placeholder="" label="content" ></textarea></p>
                 <br>
-                <button type="submit">Submit</button>
-                <button type="button" style="color:red">
-                    <a th:href="@{/about}">Cancel</a>
-                </button>
+                <input type="submit" value="Submit" />
                 <input type="reset" value="Reset" />
             </form>
 

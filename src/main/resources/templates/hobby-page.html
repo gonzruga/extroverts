@@ -18,14 +18,13 @@
                 <div class="card-header border-0 pb-0">
                     <h1 class="h4 card-title mb-0">HOBBY PAGE</h1>
                     <br>
-                    <p th:text="'[Editing will be restricted]'" >
                 </div>
 
                 <div class="card-body">
 
                     <p th:text="'ID: ' + ${hobby.id}" style="display:none" />
 
-                    <p th:text="'Hobby Name: ' + ${hobby.title}" > <br>
+                    <p th:utext="'Hobby Name: <strong>' + ${hobby.title} + '</strong>'" > <br>
                     <p th:text="'Service Provider: ' + ${hobby.getServiceProvider}" > <br>
                     <p th:text="'Average Cost €' + ${hobby.getPrice}" > <br>
                     <p th:text="'Description: ' + ${hobby.getHobbyDescription}" > <br>
@@ -37,18 +36,8 @@
                         <a th:href="@{/hobbies(keyword=${tag.tagTitle})}" th:each="tag : ${hobby.tagListHobby}" th:text="${tag.tagTitle} + ', '"> </a>
                     </div>
 
-                    <p th:text="'Created by: ' + ${hobby.hobbyCreator.firstName}"></p>
+<!--                    <p th:text="'Created by: ' + ${hobby.hobbyCreator.firstName}"></p>-->
 
-<!--                    <p th:if="${hobby.hobbyCreator != null}">-->
-<!--                        Created by:-->
-<!--                        <a th:href="@{/userPage/{id}(id=${hobby.hobbyCreator.id})}" th:text="${hobby.hobbyCreator.firstName}"></a>-->
-<!--                    </p>-->
-<!--                    <p th:if="${hobby.hobbyCreator == null}">-->
-<!--                        Creator information is not available.-->
-<!--                    </p>-->
-
-<!--                    <p th:text="'Created by: '"></p>-->
-<!--                    <a th:href="@{/userPage/{id}(id=${hobby.getHobbyCreator().getId()})}" th:text="${hobby.getHobbyCreator().getFirstName()}" > </a>-->
 
 <!--                    Divider-->
                     <hr>
@@ -57,9 +46,9 @@
                         <input type="submit" value="Edit" />
                     </form>
 
-                    <form th:action="@{/hobbyDelete/{id}(id=${hobby.id})}">
-                        <input type="submit" value="Delete" style="color:red" />
-                    </form>
+<!--                    <form th:action="@{/hobbyDelete/{id}(id=${hobby.id})}">-->
+<!--                        <input type="submit" value="Delete" style="color:red" />-->
+<!--                    </form>-->
 
                     <form th:action="@{/hobbies}">
                         <input type="submit" value="Back to List of Hobbies" style="color:blue" />

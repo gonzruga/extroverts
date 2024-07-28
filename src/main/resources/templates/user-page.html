@@ -16,28 +16,27 @@
             <div class="card">
                 <div class="card-header border-0 pb-0">
                     <h1 class="h4 card-title mb-0">EXTROVERT PROFILE</h1>
+                    <br>
+                    <button class="bookmark-btn" onclick="bookmarkPage()">Bookmark this page</button>
+                    <br>
                 </div>
 
                 <div class="card-body">
-
                     <p th:text="'ID: ' + ${user.id}" style="display:none" />
 
-                    <p th:text="'Name: ' + ${user.firstName} + ' ' + ${user.secondName}" ></p>
+                    <p>Name: <strong th:text="${user.firstName} + ' ' + ${user.secondName}" ></strong></p>
                     <p th:text="'User ID: ' + ${user.id}" >
                     <p th:text="'Gender: ' + ${user.gender}" >
                     <p th:text="'Origin: ' + ${user.origin.displayValue}" >
-
                     <p th:text="'Profession: ' + ${user.profession}" >
                     <p th:text="'Department: ' + ${user.department}" >
 <!--                    <p th:text="'LinkedIn: ' + ${user.linkedIn}" >-->
                     <div> <a th:href="${user.getLinkedIn()}" target="_blank">Social Media Profile</a> </div>
                     <br>
                     <p th:text="'Bio: ' + ${user.bio}" >
-
 <!--                    <p th:text="'Dating Objective: ' + ${user.datingObjectives}" >-->
-
 <!--            HOBBIES-->
-                    <p th:text="'Hobbies'" >
+                    <p th:text="'Hobbies:'" >
                     <dl th:each="hobby : ${user.hobbies}">
                         <dd>
                             <a th:href="@{/hobbyPage/{id}(id=${hobby.id})}">
@@ -56,32 +55,35 @@
                     </form>
 
 <!--            STEBBIES-->
-                    <p th:text="'Stebby: '" >
+                    <p th:text="'Favourite Stebby: '" >
                     <div>
                         <a th:href="@{/stebbyPage/{id}(id=${stebby.getId})}" th:each="stebby : ${user.stebbyList}" th:text="${stebby.service} + ' - €' + ${stebby.price} + ', '" target="_blank"> </a>
                     </div>
                     <br>
 
-                    <p th:text="'Click on NUDGE to request ' + ${user.firstName} + ' for information or to host you at any of his or her favourite hobby or Stebby activities'" >
-                    <form action="#" th:action="@{/nudgeForm/{hostId}(hostId=${user.id})}" method="get">
-                        <input type="submit" th:value="'NUDGE'" style="background-color: yellow"/>
-                    </form>
+<!--                    -->
+<!--                    <p th:text="'Click on NUDGE to request ' + ${user.firstName} + ' for information or to host you at any of his or her favourite hobby or Stebby activities'" >-->
+<!--                    <form action="#" th:action="@{/nudgeForm/{hostId}(hostId=${user.id})}" method="get">-->
+<!--                        <input type="submit" th:value="'NUDGE'" style="background-color: yellow"/>-->
+<!--                    </form>-->
 
-<!--            REVIEWS-->
-                    <p th:text="'Reviews'" >
-                    <dl th:each="review : ${user.reviews}">
-                        <dd>
-                            <a th:href="@{/reviewPage/{id}(id=${review.id})}">
-                                <span th:text="${review.getName()}" style="color:blue"></span>
-                            </a>
-                        </dd>
-                        <dd> <span th:text="${review.getContent()}"> </span> </dd>
-                    </dl>
-                    <form action="#" th:action="@{/reviewForm/{revieweeId}/{revieweeName}(revieweeId=${user.id}, revieweeName=${user.firstName})}" method="get">
-<!--                    <form action="#" th:action="@{/reviewForm/{revieweeId}/(revieweeId=${user.id})}" method="get">-->
-<!--                        /revieweeName=${user.firstName}-->
-                        <input type="submit" value="Add Review"  />
-                    </form>
+<!--&lt;!&ndash;            REVIEWS&ndash;&gt;-->
+<!--                    <p th:text="'Reviews'" >-->
+<!--                    <dl th:each="review : ${user.reviews}">-->
+<!--                        <dd>-->
+<!--                            <a th:href="@{/reviewPage/{id}(id=${review.id})}">-->
+<!--                                <span th:text="${review.getName()}" style="color:blue"></span>-->
+<!--                            </a>-->
+<!--                        </dd>-->
+<!--                        <dd> <span th:text="${review.getContent()}"> </span> </dd>-->
+<!--                    </dl>-->
+<!--                    <form action="#" th:action="@{/reviewForm/{revieweeId}/{revieweeName}(revieweeId=${user.id}, revieweeName=${user.firstName})}" method="get">-->
+<!--&lt;!&ndash;                    <form action="#" th:action="@{/reviewForm/{revieweeId}/(revieweeId=${user.id})}" method="get">&ndash;&gt;-->
+<!--&lt;!&ndash;                        /revieweeName=${user.firstName}&ndash;&gt;-->
+<!--                        <input type="submit" value="Add Review"  />-->
+<!--                    </form>-->
+
+
 <!--            CRUD FUNCTIONS        -->
                     <form th:action="@{/userEdit/{id}(id=${user.id})}" th:object="${user}" method="GET">
                         <input type="submit" value="Edit Profile" />
@@ -91,9 +93,9 @@
 <!--                        <input type="submit" value="Delete" style="color:red" />-->
 <!--                    </form>-->
 
-                    <form th:action="@{/users}">
-                        <input type="submit" value="Back to Users" style="color:blue" />
-                    </form>
+<!--                    <form th:action="@{/users}">-->
+<!--                        <input type="submit" value="Back to Users" style="color:blue" />-->
+<!--                    </form>-->
 
                 </div>
 
@@ -109,6 +111,29 @@
 </div>
 <!--    Container END-->
 </main>
+
+<script>
+    function bookmarkPage() {
+        var bookmarkURL = window.location.href;
+        var bookmarkTitle = document.title;
+
+        if (window.sidebar && window.sidebar.addPanel) { // Firefox <=22
+            window.sidebar.addPanel(bookmarkTitle, bookmarkURL, '');
+        } else if ((window.sidebar && navigator.userAgent.toLowerCase().indexOf('firefox') > -1) || (window.opera && window.print)) { // Firefox 23+ and Opera
+            var link = document.createElement('a');
+            link.href = bookmarkURL;
+            link.title = bookmarkTitle;
+            link.rel = 'sidebar';
+            link.innerHTML = 'Bookmark';
+            link.click();
+        } else if (window.external && ('AddFavorite' in window.external)) { // IE Favorite
+            window.external.AddFavorite(bookmarkURL, bookmarkTitle);
+        } else { // WebKit - Safari/Chrome
+            alert('Press ' + (navigator.userAgent.toLowerCase().indexOf('mac') != -1 ? 'Cmd' : 'Ctrl') + '+D to bookmark this page.');
+        }
+    }
+</script>
+
 </body>
 </div>
 <div th:replace="~{Fragments/footer}"></div>
