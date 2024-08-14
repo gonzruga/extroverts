@@ -46,9 +46,18 @@ public class UserController {
     @PostMapping("/userCreate")
     public String saveUser(@ModelAttribute UserDto user, Model model){
         model.addAttribute("user", user);  // Saving user object to the db
+        //Before calling saveAll(), check if stebbyList is neither null nor contains null elements.
+        List<Stebby> stebbyList = user.getStebbyList();
+        if (stebbyList != null && !stebbyList.contains(null)) {
+            List<Stebby> savedStebbies = stebbyRepository.saveAll(stebbyList);
+            user.setStebbyList(savedStebbies);
+        }
 
-        List<Stebby> savedStebbies = stebbyRepository.saveAll(user.getStebbyList());
-        user.setStebbyList(savedStebbies);
+
+
+
+//        List<Stebby> savedStebbies = stebbyRepository.saveAll(user.getStebbyList());
+//        user.setStebbyList(savedStebbies);
 
         service.saveUser(user);
         return "redirect:/about";
@@ -59,7 +68,7 @@ public class UserController {
     public String findAllUsers(Model model, @Param("keyword") String keyword) {
         model.addAttribute("user", service.filterList(keyword));
         model.addAttribute("keyword", keyword);
-        return "users-list";
+        return "user-list";
     }
 
     @GetMapping("/userPage/{id}")
@@ -94,12 +103,20 @@ public class UserController {
 
     @PostMapping("/userUpdate/{id}")
     public String updateUser(@ModelAttribute UserDto user, @PathVariable UUID id) {
-        List<Stebby> savedStebbies = stebbyRepository.saveAll(user.getStebbyList());
-        user.setStebbyList(savedStebbies);
+        if (user.getStebbyList() != null) {
+            for (Stebby stebby : user.getStebbyList()){
+                System.out.println("Stebby: " + stebby);
+            }
+            List<Stebby> savedStebbies = stebbyRepository.saveAll(user.getStebbyList());
+            user.setStebbyList(savedStebbies);
+        }
+
+//        List<Stebby> savedStebbies = stebbyRepository.saveAll(user.getStebbyList());
+//        user.setStebbyList(savedStebbies);
 
         service.updateUser(user);
-        return "redirect:/userPage/" + id;
-//        return "redirect:/userPage/{id}";
+//        return "redirect:/userPage/" + id;
+        return "redirect:/userPage/{id}";
     }
 
 //    Test with Postman

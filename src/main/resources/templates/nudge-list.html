@@ -62,13 +62,13 @@
 
                         <dd> <span th:text="'Host ID: ' + ${nudge.nudgedUser.getId}"></span> </dd>
 
-                        <dd> <span th:text="'Host Name: ' + ${nudge.nudgedUser.getFirstName}"></span> </dd>
+                        <dd> <span th:text="'Host Name: ' + ${nudge.nudgedUser.getFirstName} + ${nudge.nudgedUser.getSecondName}"></span> </dd>
 
                         <dd> <span th:text="'Host Mobile: ' + ${nudge.nudgedUser.getMobile}"></span> </dd>
                         <dd> <span th:text="'Host Telegram: ' + ${nudge.nudgedUser.getTelegram}"></span> </dd>
                         <dd> <span th:text="'Host Email: ' + ${nudge.nudgedUser.getUserEmail}"></span> </dd>
-                        <dd> <span th:text="'Host Email: ' + ${nudge.nudgedUser.getOrigin()}"></span> </dd>
-                        <dd> <span th:text="'Host Email: ' + ${nudge.nudgedUser.getDatingObjectives()}"></span> </dd>
+                        <dd> <span th:text="'Host Origin: ' + ${nudge.nudgedUser.getOrigin()}"></span> </dd>
+                        <dd> <span th:text="'Host Dating Objectives: ' + ${nudge.nudgedUser.getDatingObjectives()}"></span> </dd>
 
                     </dl>
                 </div>

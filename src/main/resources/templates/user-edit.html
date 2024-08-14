@@ -25,20 +25,14 @@
             </div>
 
             <div class="card-body">
-
                 <p th:text="'ID:' + ${user.getId}" style="display:none" >  <!-- Hidden -->
-<!--                <input type="hidden" th:field="*{id}" />-->
-
-                <!--TODO: Update image-->
-
 
                 <form th:action="@{/userUpdate/{id}(id=${user.id})}" th:object="${user}" method="post">
 
-                    <!-- For images saved on AWS & Fasthub CDN -->
+                        <!-- For images saved on AWS & Fasthub CDN -->
 <!--                <img th:src="@{user.getProfilePicUrl}" width="150" height="100" alt="" >-->
 
-<!--                <br><br>-->
-                <label for="firstName" class="form-label">First Name: </label>
+                <label class="form-label">First Name: </label>
                 <input type="text" class="form-control" id="firstName"  th:field="*{firstName}" />
                 <br>
 
@@ -77,22 +71,53 @@
 
                 <label class="form-label">Bio: </label>
                 <textarea rows="4" cols="40" class="form-control" th:field="*{bio}" /> </textarea> <br>
-
 <!--                <input type="text" class="form-control" th:field="*{bio}" />  <br>-->
 
                 <div class="col-12">
-                    <label for="origin" class="form-label">Origin: </label>
-                    <select th:field="*{origin}" id="origin" class="form-select">
-                        <option value="Estonian" th:selected="${user.origin == 'Estonian'}">Estonian</option>
-                        <option value="European" th:selected="${user.origin == 'European'}">European</option>
-                        <option value="South American" th:selected="${user.origin == 'South American'}">South American</option>
-                        <option value="North American" th:selected="${user.origin == 'North American'}">North American</option>
-                        <option value="African" th:selected="${user.origin == 'African'}">African</option>
-                        <option value="Asian" th:selected="${user.origin == 'Asian'}">Asian</option>
-                        <option value="Russian" th:selected="${user.origin == 'Russian'}">Russian</option>
-                        <option value="Others" th:selected="${user.origin == 'Others'}">Others</option>
+                    <label for="homeLocation" class="form-label">homeLocation: </label>
+                    <select th:field="*{homeLocation}" id="homeLocation" class="form-select">
+                        <option value="Posta" th:selected="${user.homeLocation == 'Posta'}">Posta</option>
+                        <option value="Kariakoo" th:selected="${user.homeLocation == 'Kariakoo'}">Kariakoo</option>
+                        <option value="Kinondoni" th:selected="${user.homeLocation == 'Kinondoni'}">Kinondoni</option>
+                        <option value="Oysterbay" th:selected="${user.homeLocation == 'Oysterbay'}">Oysterbay</option>
+                        <option value="Mikocheni" th:selected="${user.homeLocation == 'Mikocheni'}">Mikocheni</option>
+                        <option value="Sinza" th:selected="${user.homeLocation == 'Sinza'}">Sinza</option>
+                        <option value="Mwenge" th:selected="${user.homeLocation == 'Mwenge'}">Mwenge</option>
+                        <option value="MbeziChini" th:selected="${user.homeLocation == 'MbeziChini'}">Mbezi Chini</option>
+                        <option value="Tegeta/Mbweni/Bunju" th:selected="${user.homeLocation == 'Tegeta/Mbweni/Bunju'}">Tegeta/Mbweni/Bunju</option>
+                        <option value="Others" th:selected="${user.homeLocation == 'Others'}">Others</option>
                     </select>
                 </div>
+
+                <div class="col-12">
+                    <label for="workLocation" class="form-label">workLocation: </label>
+                    <select th:field="*{workLocation}" id="workLocation" class="form-select">
+                        <option value="Posta" th:selected="${user.workLocation == 'Posta'}">Posta</option>
+                        <option value="Kariakoo" th:selected="${user.workLocation == 'Kariakoo'}">Kariakoo</option>
+                        <option value="Kinondoni" th:selected="${user.workLocation == 'Kinondoni'}">Kinondoni</option>
+                        <option value="Oysterbay" th:selected="${user.workLocation == 'Oysterbay'}">Oysterbay</option>
+                        <option value="Mikocheni" th:selected="${user.workLocation == 'Mikocheni'}">Mikocheni</option>
+                        <option value="Sinza" th:selected="${user.workLocation == 'Sinza'}">Sinza</option>
+                        <option value="Mwenge" th:selected="${user.workLocation == 'Mwenge'}">Mwenge</option>
+                        <option value="MbeziChini" th:selected="${user.workLocation == 'MbeziChini'}">Mbezi Chini</option>
+                        <option value="Tegeta/Mbweni/Bunju" th:selected="${user.workLocation == 'Tegeta/Mbweni/Bunju'}">Tegeta/Mbweni/Bunju</option>
+                        <option value="Others" th:selected="${user.workLocation == 'Others'}">Others</option>
+                    </select>
+                </div>
+
+<!--                <div class="col-12">-->
+<!--                    <label for="origin" class="form-label">Origin: </label>-->
+<!--                    <select th:field="*{origin}" id="origin" class="form-select">-->
+<!--                        <option value="Estonian" th:selected="${user.origin == 'Estonian'}">Estonian</option>-->
+<!--                        <option value="European" th:selected="${user.origin == 'European'}">European</option>-->
+<!--                        <option value="South American" th:selected="${user.origin == 'South American'}">South American</option>-->
+<!--                        <option value="North American" th:selected="${user.origin == 'North American'}">North American</option>-->
+<!--                        <option value="African" th:selected="${user.origin == 'African'}">African</option>-->
+<!--                        <option value="Asian" th:selected="${user.origin == 'Asian'}">Asian</option>-->
+<!--                        <option value="Russian" th:selected="${user.origin == 'Russian'}">Russian</option>-->
+<!--                        <option value="Others" th:selected="${user.origin == 'Others'}">Others</option>-->
+<!--                    </select>-->
+<!--                </div>-->
 
                 <br>
 
@@ -106,14 +131,14 @@
                 </div>
                 <br>
 
-                <p>Stebbies</p>
-                <p>Press CTRL to select multiple options at once.</p>
-                <select multiple th:field="*{stebbyList}">
-                    <option th:each="stebby : ${allStebbies}" th:value="${stebby.getId()}" th:text="${stebby.service}">
-                    </option>
-                </select>
+<!--                <p>Stebbies</p>-->
+<!--                <p>Press CTRL to select multiple options at once.</p>-->
+<!--                <select multiple th:field="*{stebbyList}">-->
+<!--                    <option th:each="stebby : ${allStebbies}" th:value="${stebby.getId()}" th:text="${stebby.service}">-->
+<!--                    </option>-->
+<!--                </select>-->
 
-<!--                    TODO: Password edit with Spring Boot Security-->
+<!--                    Password edit with Spring Boot Security-->
 <!--                    <p>Password: <input type="password" th:field="*{password}" /></p>-->
 
                     <br><br>

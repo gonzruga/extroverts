@@ -1,0 +1,110 @@
+<div th:replace="~{Fragments/head}"></div>
+
+<body>
+
+<div th:replace="~{Fragments/MainNavbar}"></div>
+
+<main>
+
+    <!-- Container START -->
+    <div class="container">
+        <!-- Row START -->
+        <div class="row g-4">
+
+            <div th:replace="~{Fragments/NavLeft}"></div>
+
+            <!-- Main content START -->
+            <div class="col-md-8 col-lg-6 vstack gap-4">
+
+                <!-- Create a page START -->
+                <div class="card">
+                    <!-- Title START -->
+                    <div class="card-header border-0 pb-0">
+                        <h1 class="h4 card-title mb-0">Indicate Your Interest in a Hobby</h1>
+                        <p>The below info will be kept secret. The platform will use it to recommend to you interesting extroverts and relevant hobbies</p>
+                    </div>
+                    <!-- Title END -->
+
+<!--                    Details of Nudged user-->
+                    <div>
+                        <input type="hidden" th:value="${hobbyId}" name="hobbyId"/>
+
+                        <br>
+                        <p th:text="'Title: ' + ${hobby.title}" ></p>
+
+                        <p th:text="'Service Provider: ' + ${hobby.serviceProvider}" >
+                        <p th:text="'Average Cost: TZS ' + ${hobby.price}" >
+
+                        <div> <a th:href="${hobby.getLink()}" target="_blank">Link</a> </div>
+                        <br>
+                        <p th:text="'Description: ' + ${hobby.hobbyDescription}" >
+
+                    </div>
+
+                    <br>
+
+                    <!-- Form START -->
+                    <div class="card-body">
+                        <form id="nudgeForm" th:action="@{/hostRequestSubmit}" th:object="${hostRequest}" method="POST" class="row g-3" >
+
+                            <!-- Hidden User ID -->
+                            <input type="hidden" th:value="${hobbyId}" name="hobbyId"/>
+
+                            <!-- Row 1:  -->
+                            <div class="col-12">
+                                <label for="yourProfileId" class="form-label">Your User ID (if registered): </label>
+                                <input type="text" class="form-control" id="yourProfileId" th:field="*{yourProfileId}" placeholder="Your profile Id (if you have one)">
+                            </div>
+
+                            <div class="col-sm-12 col-lg-12">
+                                <label for="contacts" class="form-label">Your Contacts if not registered. (Name, Instagram, Telegram ID, phone, or email) *optional</label>
+                                <input type="text" class="form-control" id="contacts" th:field="*{contacts}" placeholder="">
+                            </div>
+
+                            <!-- Row 2:  -->
+                            <div class="col-sm-12 col-lg-12">
+                                <label for="comment" class="form-label">Comment (your opinion about the hobby and questions.</label>
+                                <textarea rows="4" cols="40" class="form-control" id="comment" th:field="*{comment}"></textarea>
+<!--                                <input type="text" class="form-control" id="comment" th:field="*{comment}">-->
+                            </div>
+
+                            <!-- Divider  -->
+                            <hr>
+
+                            <p>
+                                In the comment you can write anything you want about the hobby, about you, or anything.
+                                The platform algorithm will take small bits from the comment to give suggested extroverts.
+                            </p>
+
+                            <div class="col-12 text-end">
+                                <button type="submit" class="btn btn-primary mb-0">Submit</button>
+                                <button type="reset" class="btn btn-primary mb-0">Reset</button>
+                                <button type="button" class="btn btn-link" style="color:red">
+                                    <a th:href="@{/nudgeList}" style="color:red">Cancel</a>
+                                </button>
+                            </div>
+
+                        </form>
+
+                </div>
+                    <!-- Form END -->
+
+                </div>
+                <!-- Create a page START -->
+
+            </div>
+            <!-- Main Content END-->
+
+            <div th:replace="~{Fragments/NavRight}"></div>
+
+        </div>
+        <!-- Row END -->
+
+    </div>
+    <!-- Container END -->
+
+</main>
+
+</body>
+
+<div th:replace="~{Fragments/footer}"></div>

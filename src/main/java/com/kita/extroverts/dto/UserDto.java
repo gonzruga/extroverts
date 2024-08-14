@@ -37,6 +37,9 @@ public class UserDto {
     private String linkedIn;
     private Integer yob;
 
+    private String homeLocation;
+    private String workLocation;
+
     private String bio;
 
     private String origin;
@@ -75,12 +78,20 @@ public class UserDto {
         user.setDepartment(department);
         user.setLinkedIn(linkedIn);
         user.setYob(yob);
+        user.setHomeLocation(homeLocation);
+        user.setWorkLocation(workLocation);
         user.setBio(bio);
 
         if (this.origin != null && !this.origin.isEmpty()) {
-            user.setOrigin(User.Origin.fromDisplayValue(origin));
+            try{   // Convert the string origin to the corresponding enum using display value
+                user.setOrigin(User.Origin.fromDisplayValue(origin));}
+            catch (IllegalArgumentException e) {
+                throw new IllegalArgumentException("Invalid origin value provided: " + origin, e);
+            }
+        } else {
+            // Set a default origin or throw an exception
+            user.setOrigin(User.Origin.OTHERS); // or throw new IllegalArgumentException("Origin must not be null or empty");
         }
-//        user.setOrigin(User.Origin.fromDisplayValue(origin));
 
 //        user.setDatingObjectives(User.DatingObjectives.valueOf(datingObjectives));
         if (this.datingObjectives != null && !this.datingObjectives.isEmpty()) {
@@ -91,9 +102,6 @@ public class UserDto {
                 user.setDatingObjectives(null);
             }
         }
-
-
-        user.setProfilePicUrl(profilePicUrl);
 
         user.setStebbyList(stebbyList);
 

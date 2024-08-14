@@ -17,9 +17,6 @@ import java.util.Date;
 @RequiredArgsConstructor
 public class NudgeDto {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name="id", nullable = false)
     private Long id;
 
     private int yourProfileId;

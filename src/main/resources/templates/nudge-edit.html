@@ -28,14 +28,10 @@
 
                 <form th:action="@{/nudgeUpdate/{id}(id=${nudge.id})}" th:object="${nudge}" method="post">
 
-<!--                    <p th:text="'ID: (*To be hidden) ' + *{id}">-->
+                    <p>Host requestor ID: <input type="text" th:field="*{nudge.yourProfileId}" /></p>
+                    <p>Requestor Contacts: <input type="text" th:field="*{nudge.contacts}" /></p>
 
-                    <p>Host requestor ID: <input type="text" th:field="*{udge.yourProfileId}" /></p>
-                    <p>Requestor Contacts: <input type="email" th:field="*{nudge.contacts}" /></p>
-
-                    <p>Nudge Comment: <input type="email" th:field="*{nudge.comment}" /></p>
-
-                    <p>Nudge Comment: <input type="email" th:field="*{nudge.comment}" /></p>
+                    <p>Nudge Comment: <input type="text" th:field="*{nudge.comment}" /></p>
 
                     <p>Host Id: <input type="text" th:field="*{nudge.subjectId}" /></p>
                     <p>Host Name: <input type="text" th:field="*{nudge.subjectName}" /></p>

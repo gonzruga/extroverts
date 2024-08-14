@@ -53,9 +53,9 @@
 
 <!--                    Removed class="stretched-link" because it applies to all hobbies. TODO: Debbuging-->
 
-                        <dd><h5> <a th:href="@{/hobbyPage/{id}(id=${hobby.id})}"><span th:text="${hobby.title}"></span></a> </h5></dd>
+                        <dd><h5> <a th:href="@{/hobbyPage/{id}(id=${hobby.id})}" target="_blank"><span th:text="${hobby.title}"></span></a> </h5></dd>
                         <dd> <span th:text="'Service Provider: ' + ${hobby.getServiceProvider}"></span> </dd>
-                        <dd> <span th:text="'Average Cost: ' + ${hobby.getPrice} + '€'"></span> </dd>
+                        <dd> <span th:text="'Average Cost: TZS ' + ${hobby.getPrice}"></span> </dd>
                         <dd>  <div> <a th:href="${hobby.getLink()}" target="_blank">Website</a> </div> </dd>
 
                         <dd> <span th:text="'Tags: '"></span> </dd>

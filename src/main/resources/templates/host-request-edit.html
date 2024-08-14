@@ -1,0 +1,69 @@
+<div th:replace="~{Fragments/head}"></div>
+
+<body>
+
+<div th:replace="~{Fragments/MainNavbar}"></div>
+
+<main>
+
+<div class="container">
+
+<div class="row g-4">
+
+        <div th:replace="~{Fragments/NavLeft}"></div>
+
+<!--        Main Content Start-->
+    <div class="col-md-8 col-lg-6 vstack gap-4">
+
+        <div class="card">
+
+            <div class="card-header border-0 pb-0">
+                <h1 class="h4 card-title mb-0">EDIT HOST REQUEST</h1>
+                <p th:text="'Edit the details below:'" />
+            </div>
+
+            <div class="card-body">
+
+                <!-- TODO: Edit access to be restricted only to respective user who created the business. Spring Boot Security-->
+
+                <form th:action="@{/hostRequestUpdate/{id}(id=${hostRequest.id})}" th:object="${hostRequest}" method="post">
+                    <p th:utext="'<strong>Summary about the hobby you are intrested in or wish to be hosted: </strong>'"></p>
+
+<!--                    <p>Hobby Name: <span th:text="${hostRequest.hobby.title}" ></span></p>-->
+
+                    <p>Hobby Title: <a th:href="@{hobbyPage/{id}(id=${hostRequest.hobby.title})}"><b th:text="${hostRequest.hobby.title}" ></b></a></p>
+                    <p>Hobby Description: <span th:text="${hostRequest.hobby.hobbyDescription}" ></span></p>
+
+                    <br><br>
+
+                    <p th:utext="'<strong>Details you can edit about your show of interest</strong>'"></p>
+                    <p>Your User ID: <input type="text" th:field="*{yourProfileId}" /></p>
+                    <p>Your Contacts: <input type="text" th:field="*{contacts}" /></p>
+                    <p>Comments: <input type="text" th:field="*{comment}" /></p>
+
+                    <br><br>
+
+                    <button type="submit"> Submit </button>
+
+                    <button type="button" style="color:red">
+                        <a th:href="@{/hostRequestPage/{id}(id=${hostRequest.id})}">Cancel</a>
+                    </button>
+
+                </form>
+            </div>
+
+        </div>
+
+    </div>
+<!--        Main Content End-->
+
+    <div th:replace="~{Fragments/NavRight}"></div>
+
+</div>
+
+</div>
+
+</main>
+</body>>
+
+<div th:replace="~{Fragments/footer}"></div>

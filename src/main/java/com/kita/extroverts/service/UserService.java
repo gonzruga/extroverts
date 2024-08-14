@@ -49,6 +49,8 @@ public class UserService {
         existingUser.setDepartment(user.getDepartment());
         existingUser.setLinkedIn(user.getLinkedIn());
         existingUser.setYob(user.getYob());
+        existingUser.setHomeLocation(user.getHomeLocation());
+        existingUser.setWorkLocation(user.getWorkLocation());
         existingUser.setBio(user.getBio());
 
         existingUser.setProfilePicUrl(user.getProfilePicUrl());

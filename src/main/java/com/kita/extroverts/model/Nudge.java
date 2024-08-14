@@ -1,6 +1,6 @@
 package com.kita.extroverts.model;
 
-import jakarta.persistence.*;
+import jakarta.persistence.*;  //Entity, GeneratedValue, id,Table, Column
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
@@ -28,7 +28,7 @@ public class Nudge {
     private String subjectName;
 
     @ManyToOne
-    @JoinColumn(name = "nudged_user_id")
+    @JoinColumn(name = "nudged_user")
     private User nudgedUser;
 
     @CreationTimestamp

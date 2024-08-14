@@ -29,8 +29,6 @@
 <!--                    <img th:src="@{hobby.getImageOneUrl}" width="150" height="100" alt="hobby Image One">-->
 
                     <br><br>
-                    <!-- TODO Hide ID -->
-<!--                    <p th:text="'ID: (*To be hidden) ' + *{id}"></p>-->
 
                     <label class="form-label">Hobby name: </label>
                     <input type="text" th:field="*{title}" /> <br>
@@ -38,7 +36,7 @@
                     <label class="form-label">Service Provider: </label>
                     <input type="text" th:field="*{serviceProvider}" />  <br>
 
-                    <label class="form-label">Price: </label>
+                    <label class="form-label">Average Cost (TZS): </label>
                     <input type="number" th:field="*{price}" />  <br>
 
                     <label class="form-label">Link: </label>

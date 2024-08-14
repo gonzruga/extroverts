@@ -26,7 +26,7 @@ public class HobbyDto {
     private String hobbyDescription;
     private String link;
 
-    private UUID creatorId;
+    private UUID creatorId; //New created on submiting form
     private User hobbyCreator;
 
     private List<Tag> tagListHobby;

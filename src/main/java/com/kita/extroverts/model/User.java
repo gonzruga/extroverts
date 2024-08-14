@@ -1,7 +1,7 @@
 package com.kita.extroverts.model;
 
 
-import jakarta.persistence.*;
+import jakarta.persistence.*;  //Entity, GeneratedValue, id,Table, Column
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
@@ -44,10 +44,13 @@ public class User {
     private String linkedIn;
     private Integer yob;
 
+    private String homeLocation;
+    private String workLocation;
+
     private String bio;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "origin", nullable = false, length = 20) // Adjust length as needed
+    @Column(name = "origin", nullable = true, length = 20) // Adjust length as needed
     private Origin origin;
 
     @Enumerated(EnumType.STRING)
@@ -68,6 +71,7 @@ public class User {
     private Set<Nudge> nudges;
     // Array is not good because fetching them can cause errors. Instead I use Set
 
+    //TODO Reviewee vs Review_id
     @OneToMany(mappedBy = "reviewee", fetch = FetchType.EAGER)
     private Set<Review> reviews;
 
@@ -77,6 +81,10 @@ public class User {
     private Date updatedAt = null;
 
 //    ENUMS CODE
+    public enum HomeLocation {Posta, Kariakoo, Kinondoni, Oysterbay, Mkocheni, Sinza, Mwenge, MbeziChini, Goba, Tegeta, Mbweni, Others}
+
+    public enum WorkLocation {Posta, Kariakoo, Kinondoni, Oysterbay, Mkocheni, Sinza, Mwenge, MbeziChini, Goba, Tegeta, Mbweni, Others}
+
     public enum Gender { Male, Female }
 
     public enum DatingObjectives { Looking, Whatever, No }
@@ -102,9 +110,12 @@ public class User {
         }
 
         public static Origin fromDisplayValue(String displayValue) {
+            if (displayValue == null || displayValue.isEmpty()){
+                return null; // or return a default value if necessary
+            }
             for (Origin origin : Origin.values()) {
                 if (origin.getDisplayValue().equalsIgnoreCase(displayValue)) {
-                    return origin;
+                    return origin.OTHERS;  // Default to 'OTHERS' if origin is null or empty
                 }
             }
             throw new IllegalArgumentException("No constant with display value: " + displayValue);

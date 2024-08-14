@@ -1,0 +1,54 @@
+<div th:replace="~{Fragments/head}"></div>
+
+<body>
+</main>
+
+<div th:replace="~{Fragments/MainNavbar}"></div>
+
+<main>
+
+    <!--    Container START -->
+
+    <div class="container">
+
+        <!--    Row  START  -->
+        <div class="row g-4">
+
+            <div th:replace="~{Fragments/NavLeft}"></div>
+
+            <!--        Main Content START  -->
+            <div class="col-md-8 col-lg-6 vstack gap-4">
+
+
+                <div>
+                    <h3>SUBMITED REQUEST</h3>
+                    <p th:text="'Welcome! Below is the request you have posted. It will not be public. You shall receive edit link via the contacts you provided.'" />
+
+                    <input type="hidden" th:value="${hobbyId}" name="hobbyId" />
+
+                    <p th:text="'Your profile ID: ' + ${hostRequest.yourProfileId}" />
+
+                    <p th:text="'Your comment: ' + ${hostRequest.comment}" />
+                    <p th:text="'Your contacts: ' + ${hostRequest.contacts}" />
+
+<!--                    <p th:text="'This page ID: ' + ${hostRequest.id}" />-->
+
+                    <form th:action="@{'/hobbyPage/' + ${hobbyId}}" method="get" >
+                        <input type="submit" value="Back to hobby" />
+                    </form>
+                </div>
+
+            </div>
+            <!--        Main Content End    -->
+
+            <div th:replace="~{Fragments/NavRight}"></div>
+
+        </div>
+        <!--    Row END -->
+
+    </div>
+    <!--    Container END   -->
+</main>
+</body>
+
+<div th:replace="~{Fragments/footer}"></div>

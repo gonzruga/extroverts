@@ -1,5 +1,6 @@
 package com.kita.extroverts.model;
 
+
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -8,29 +9,31 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.util.Date;
+import java.util.UUID;
 
 @Getter
 @Setter
-@RequiredArgsConstructor
 @Entity
-@Table(name = "review")
-public class Review {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id", nullable = false, updatable = false)
-    private Long id;
+@Table(name="host_request")
+@RequiredArgsConstructor
+public class HostRequest {
 
-    private String content;
-    private String name;
+    @Id
+    @GeneratedValue
+    @Column(name = "id", nullable = false, updatable = false)
+    private UUID id;
+
+    private UUID yourProfileId;
+    private String contacts;
+    private String comment;
 
     @ManyToOne
-    @JoinColumn(name = "reviewee")
-    private User reviewee;  //Used in ReviewController: 'reviewSubmit'
+    @JoinColumn(name = "hobby_id")
+    private Hobby hobby;
 
     @CreationTimestamp
     private Date createdAt  = new Date();
     @UpdateTimestamp
-    private Date updatedAt;
+    private Date updatedAt = null;
 
 }
-

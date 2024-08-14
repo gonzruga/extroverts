@@ -11,4 +11,9 @@ public class PageController {
         return "about";
     }
 
+    @GetMapping("/admin")
+    public String admin() {
+        return "admin";
+    }
+
 }

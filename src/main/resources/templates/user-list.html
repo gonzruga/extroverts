@@ -33,7 +33,10 @@
                 <dd><span th:text="'User ID: '+ ${user.id}"></span>
 
                 <dd><span th:text="${user.gender}"></span></dd>
-                <dd><span th:text="${user.origin.displayValue}"></span></dd>
+                <dd><span th:text="'Home:' + ${user.homeLocation}"></span></dd>
+                <dd><span th:text="'Work:' + ${user.workLocation}"></span></dd>
+
+                <!--                <dd><span th:text="${user.origin.displayValue}"></span></dd>-->
 
                 <dd><span th:text="'Industry Profession: ' + ${user.profession}"></span></dd>
                 <dd><span th:text="'Department: ' + ${user.department}"></span></dd>

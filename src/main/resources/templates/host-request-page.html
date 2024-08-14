@@ -1,0 +1,69 @@
+<div th:replace="~{Fragments/head}"></div>
+
+<body>
+<div th:replace="~{Fragments/MainNavbar}"></div>
+<main>
+<!--    Container START-->
+<div class="container">
+
+    <div class="row g-4">
+
+        <div th:replace="~{Fragments/NavLeft}"></div>
+
+<!--        Main Content Start-->
+        <div class="col-md-8 col-lg-6 vstack gap-4">
+
+            <div class="card">
+
+                <div class="card-header border-0 pb-0">
+                    <h1 class="h4 card-title mb-0">HOBBY INTEREST PAGE / HOST REQUEST PAGE</h1>
+                    <br>
+                </div>
+
+                <div class="card-body">
+
+                    <p th:text="'Profile Id of interested user (you): ' + ${hostRequest.yourProfileId}"> <br>
+                    <p th:text="'Contacts: ' + ${hostRequest.contacts}" > <br>
+                    <p th:text="'Comment: ' + ${hostRequest.comment}" > <br>
+                    <br>
+                    <br>
+                    <hr>
+
+                    <p th:utext="'<strong>Summary details of interested Hobby</strong>'"></p>
+                    <p>Hobby Title: <a th:href="@{hobbyPage/{id}(id=${hostRequest.hobby.title})}"><b th:text="${hostRequest.hobby.title}" ></b></a></p>
+
+<!--                    <p th:text="'Title: ' + ${hostRequest.hobby.title}" ></p>-->
+<!--                    <p th:text="'Hobby Id: ' + ${hostRequest.hobby.id}" > <br>-->
+                    <p th:text="'Service Provider: ' + ${hostRequest.hobby.serviceProvider}" > <br>
+                    <p th:text="'Average Cost: ' + ${hostRequest.hobby.price}" > <br>
+                    <p th:text="'Hobby Description: ' + ${hostRequest.hobby.hobbyDescription}" > <br>
+
+                    <form th:action="@{/hostRequestEdit/{id}(id=${hostRequest.id})}" th:object="${hostRequest}" method="GET">
+                        <input type="submit" value="Edit" />
+                    </form>
+
+<!--                    <form th:action="@{/hostRequestDelete/{id}(id=${hostRequest.id})}">-->
+<!--                        <input type="submit" value="Delete" style="color:red" />-->
+<!--                    </form>-->
+
+<!--                    <form th:action="@{/hostRequestList}">-->
+<!--                        <input type="submit" value="Back to List of Host Requests" style="color:blue" />-->
+<!--                    </form>-->
+
+                </div>
+
+            </div>
+
+        </div>
+<!--        Main Content End-->
+
+    <div th:replace="~{Fragments/NavRight}"></div>
+
+</div>
+
+</div>
+<!--    Container END-->
+</main>
+</body>
+
+<div th:replace="~{Fragments/footer}"></div>

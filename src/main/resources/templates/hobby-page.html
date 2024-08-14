@@ -26,7 +26,7 @@
 
                     <p th:utext="'Hobby Name: <strong>' + ${hobby.title} + '</strong>'" > <br>
                     <p th:text="'Service Provider: ' + ${hobby.getServiceProvider}" > <br>
-                    <p th:text="'Average Cost €' + ${hobby.getPrice}" > <br>
+                    <p th:text="'Average Cost TZS ' + ${hobby.getPrice}" > <br>
                     <p th:text="'Description: ' + ${hobby.getHobbyDescription}" > <br>
                     <div><a th:href="${hobby.getLink()}" target="_blank">Link</a></div>
                     <br>
@@ -38,12 +38,19 @@
 
 <!--                    <p th:text="'Created by: ' + ${hobby.hobbyCreator.firstName}"></p>-->
 
+                    <br>
+                    <br>
+
+                    <p th:text="'If you are interested in this hobby click \'Show Interest\' below and you shall get connected with relevant extroverts.'" >
+                    <form action="#" th:action="@{/hostRequestForm/{hobbyId}(hobbyId=${hobby.id})}" method="get" target="_blank">
+                        <input type="submit" value="Show Interest"  />
+                    </form>
 
 <!--                    Divider-->
                     <hr>
 
                     <form th:action="@{/hobbyEdit/{id}(id=${hobby.id})}" th:object="${hobby}" method="GET">
-                        <input type="submit" value="Edit" />
+                        <input type="submit" value="Edit Hobby" />
                     </form>
 
 <!--                    <form th:action="@{/hobbyDelete/{id}(id=${hobby.id})}">-->

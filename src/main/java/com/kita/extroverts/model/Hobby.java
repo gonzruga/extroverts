@@ -10,6 +10,7 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -39,6 +40,9 @@ public class Hobby {
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "hobby_id")
     private List<Tag> tagListHobby;
+
+    @OneToMany(mappedBy = "hobby", fetch = FetchType.EAGER)
+    private Set<HostRequest> hostRequests;
 
     @CreationTimestamp
     private Date createdAt  = new Date();

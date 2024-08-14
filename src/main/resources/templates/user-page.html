@@ -24,13 +24,17 @@
                 <div class="card-body">
                     <p th:text="'ID: ' + ${user.id}" style="display:none" />
 
-                    <p>Name: <strong th:text="${user.firstName} + ' ' + ${user.secondName}" ></strong></p>
+                    <p th:utext="'<strong>' + ${user.firstName} + ' ' + ${user.secondName} + '</strong>'"></p>
                     <p th:text="'User ID: ' + ${user.id}" >
                     <p th:text="'Gender: ' + ${user.gender}" >
-                    <p th:text="'Origin: ' + ${user.origin.displayValue}" >
+<!--                    <p th:text="'Origin: ' + ${user.origin.displayValue}" >-->
                     <p th:text="'Profession: ' + ${user.profession}" >
                     <p th:text="'Department: ' + ${user.department}" >
-<!--                    <p th:text="'LinkedIn: ' + ${user.linkedIn}" >-->
+
+                    <p th:text="'Home Location: ' + ${user.homeLocation}" >
+                    <p th:text="'Work Location: ' + ${user.workLocation}" >
+
+                    <!--                    <p th:text="'LinkedIn: ' + ${user.linkedIn}" >-->
                     <div> <a th:href="${user.getLinkedIn()}" target="_blank">Social Media Profile</a> </div>
                     <br>
                     <p th:text="'Bio: ' + ${user.bio}" >
@@ -55,11 +59,11 @@
                     </form>
 
 <!--            STEBBIES-->
-                    <p th:text="'Favourite Stebby: '" >
-                    <div>
-                        <a th:href="@{/stebbyPage/{id}(id=${stebby.getId})}" th:each="stebby : ${user.stebbyList}" th:text="${stebby.service} + ' - €' + ${stebby.price} + ', '" target="_blank"> </a>
-                    </div>
-                    <br>
+<!--                    <p th:text="'Favourite Stebby: '" >-->
+<!--                    <div>-->
+<!--                        <a th:href="@{/stebbyPage/{id}(id=${stebby.getId})}" th:each="stebby : ${user.stebbyList}" th:text="${stebby.service} + ' - €' + ${stebby.price} + ', '" target="_blank"> </a>-->
+<!--                    </div>-->
+<!--                    <br>-->
 
 <!--                    -->
 <!--                    <p th:text="'Click on NUDGE to request ' + ${user.firstName} + ' for information or to host you at any of his or her favourite hobby or Stebby activities'" >-->
@@ -85,9 +89,10 @@
 
 
 <!--            CRUD FUNCTIONS        -->
-                    <form th:action="@{/userEdit/{id}(id=${user.id})}" th:object="${user}" method="GET">
-                        <input type="submit" value="Edit Profile" />
-                    </form>
+
+<!--                    <form th:action="@{/userEdit/{id}(id=${user.id})}" th:object="${user}" method="GET">-->
+<!--                        <input type="submit" value="Edit Profile" />-->
+<!--                    </form>-->
 
 <!--                    <form th:action="@{/userDelete/{id}(id=${user.id})}">-->
 <!--                        <input type="submit" value="Delete" style="color:red" />-->

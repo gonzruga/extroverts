@@ -28,8 +28,6 @@
 
                 <form th:action="@{/tagUpdate/{id}(id=${tag.id})}" th:object="${tag}" method="post">
 
-<!--                    <p th:text="'ID: (*To be hidden) ' + *{id}">-->
-
                     <p>Tag Title: <input type="text" th:field="*{tagTitle}" /></p>
                     <p>Description: <br>
                         <textarea rows="2" cols="40" th:field="*{tagDescription}" /></p>

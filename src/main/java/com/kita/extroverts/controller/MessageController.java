@@ -52,7 +52,6 @@ public class MessageController {
 
 //    public String messageSubmit(@ModelAttribute MessageDto message, Model model, @RequestParam UUID chatId) {
 
-
         // READ - GET
     @GetMapping("/messagePage/{id}")
     public String messagePage(@PathVariable UUID id, Model model) {
